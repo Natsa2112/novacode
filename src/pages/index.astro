@@ -1,116 +1,29 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Card from "../components/Card.astro";
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import Services from '../components/Services.astro';
+import About from '../components/About.astro';
+import Plans from '../components/Plans.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
 ---
 
 <Layout title="NovaCode">
+  <Header />
   <main>
-    <h1 class="text-gradient">NovaCode</h1>
-    <p class="instructions">Logo: NovaCode.</p>
-    <span>Conectamos tu marca con el mundo.</span>
-    <p>Botón CTA: "Solicita una Consulta Gratis"</p>
-
-    <nav>
-      Menú de navegación: Inicio Servicios Sobre Nosotros Planes Contacto
-    </nav>
-
-    <section class="hero">
-      <h2 class="hero_title">
-        "Desarrollamos el Futuro Digital de tu Negocio"
-      </h2>
-
-      <p>
-        "En NovaCode, transformamos ideas en experiencias digitales que capturan
-        clientes y potencian resultados. Con soluciones a medida en marketing
-        digital y diseño web, hacemos que tu empresa destaque en un mundo cada
-        vez más conectado."
-      </p>
-
-      <p>Botones CTA: "Quiero Impulsar Mi Negocio" "Explorar Servicios"</p>
-    </section>
-    Imagen: Visual de un equipo trabajando en pantallas con gráficos de crecimiento
-    digital o una ilustración que represente creatividad y tecnología.
+    <Hero />
+    <Services />
+    <About />
+    <Plans />
+    <Contact />
   </main>
+  <Footer />
 </Layout>
 
-<section class="features">
-  <h2>Sobre Nosotros (Quiénes Somos)</h2>
-
-  <p>
-    Título: "En NovaCode, Diseñamos el Éxito Digital" Descripción: "Somos una
-    agencia de desarrollo web y marketing digital con sede en Buenos Aires,
-    Argentina. En NovaCode, nos apasiona fusionar creatividad y tecnología para
-    brindar soluciones innovadoras a empresas que desean crecer en el entorno
-    digital. Nuestro equipo está compuesto por expertos en diseño, programación,
-    y estrategias de marketing que comparten la misión de hacer que cada
-    proyecto tenga un impacto real." Visión: "Ser la referencia en soluciones
-    digitales integrales en Latinoamérica, acompañando a nuestros clientes en
-    cada paso hacia la transformación digital." Misión: "Convertir las ideas en
-    experiencias digitales memorables que impulsen negocios a alcanzar todo su
-    potencial."
-  </p>
-</section>
-
-<section class="pricing">
-  4. <h2>Servicios (Qué Ofrecemos)</h2>
-
-  <p>
-    Título: "Soluciones Digitales para Cada Necesidad" Introducción: "En
-    NovaCode, cubrimos todos los frentes de la presencia digital. Desde el
-    desarrollo de páginas web profesionales hasta campañas de marketing digital
-    de alto impacto, nuestros servicios están diseñados para maximizar tu
-    crecimiento." Marketing Digital: "Construimos estrategias que conectan con
-    tu audiencia y convierten visitantes en clientes. SEO, campañas de anuncios,
-    gestión de redes sociales y más." Estrategias SEO para mayor visibilidad.
-    Publicidad digital (Google Ads, Meta Ads). Gestión y crecimiento en redes
-    sociales. Diseño y Desarrollo Web: "Creamos sitios web rápidos, atractivos y
-    funcionales que garantizan una experiencia de usuario impecable, desde
-    cualquier dispositivo." Páginas web personalizadas. Diseño UX/UI optimizado
-    para la conversión. Desarrollo responsivo y orientado a SEO. Branding y
-    Estrategia Visual: "Diseñamos identidades visuales que representan la
-    esencia de cada marca y la hacen reconocible." Creación de logotipos y
-    manuales de identidad. Estrategias de branding coherentes y creativas.
-    Desarrollo de material gráfico para campañas.
-  </p>
-</section>
-
-<section class="contact">
-  <h2>Planes y Precios</h2>
-
-  <p>
-    Título: "Un Plan para Cada Etapa de tu Negocio" Introducción: "Entendemos
-    que cada empresa es única, por eso ofrecemos planes flexibles que se adaptan
-    a tus necesidades específicas. Desde emprendedores hasta grandes compañías,
-    tenemos la solución ideal para ti." Plan Básico: "Perfecto para quienes
-    recién empiezan." Página web sencilla de hasta 5 secciones. Optimización SEO
-    básica. Configuración de redes sociales. Precio: $XXX/mes. Plan Profesional:
-    "Ideal para negocios en crecimiento." Diseño web personalizado. Estrategia
-    SEO avanzada y campañas en Google Ads. Gestión de redes sociales. Precio:
-    $XXX/mes. Plan Premium: "La solución integral para grandes empresas." Diseño
-    web con funcionalidades avanzadas. Estrategia de marketing digital completa.
-    Consultoría y soporte prioritario. Precio: A medida.
-  </p>
-</section>
-
-<section class="cta">
-  <h2>¡Hablemos!</h2>
-
-  <p>
-    Formulario de Contacto y CTA Final Título: "Hablemos y Llevemos tu Negocio
-    al Próximo Nivel" Descripción: "¿Tienes una idea o proyecto en mente? En
-    NovaCode, queremos escucharte. Completa el formulario y uno de nuestros
-    expertos se pondrá en contacto contigo para ayudarte a dar el siguiente
-    paso." Formulario de Contacto: Nombre: Correo Electrónico: Teléfono:
-    (Opcional) Mensaje: Botón: "Enviar" Texto Motivador: "Empieza hoy a
-    transformar tu presencia digital. No esperes más para llevar tu negocio al
-    siguiente nivel."
-  </p>
-</section>
-
-<footer>
-  7. Footer (Pie de Página) Menú de Navegación: Inicio | Servicios | Planes |
-  Contacto | Política de Privacidad | Términos y Condiciones Redes Sociales:
-  Íconos con enlaces a Instagram, LinkedIn, Facebook. Copyright: © 2024
-  NovaCode. Todos los derechos reservados. Contacto Directo: info@novacode.com.ar |
-  +54 XXX XXX XXXX
-</footer>
+<style>
+  main {
+    position: relative;
+    z-index: 1;
+  }
+</style>

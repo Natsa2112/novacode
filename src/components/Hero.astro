@@ -1,0 +1,90 @@
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <h1>Desarrollamos el Futuro Digital de tu Negocio</h1>
+      <p>
+        En NovaCode, transformamos ideas en experiencias digitales que capturan
+        clientes y potencian resultados. Con soluciones a medida en marketing
+        digital y diseño web, hacemos que tu empresa destaque en un mundo cada vez
+        más conectado.
+      </p>
+      <div class="hero-buttons">
+        <a href="#contacto" class="btn btn-primary">Quiero Impulsar Mi Negocio</a>
+        <a href="#servicios" class="btn btn-secondary">Explorar Servicios</a>
+      </div>
+    </div>
+    <div class="hero-image">
+      <img src="/hero-illustration.svg" alt="NovaCode Digital Solutions" />
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding: 8rem 0 4rem;
+    position: relative;
+  }
+
+  .hero-content {
+    max-width: 600px;
+  }
+
+  h1 {
+    font-size: 3.5rem;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #666;
+    margin-bottom: 2rem;
+  }
+
+  .hero-buttons {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .hero-image {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 45%;
+    max-width: 600px;
+  }
+
+  @media (max-width: 1024px) {
+    .hero-image {
+      position: relative;
+      width: 100%;
+      transform: none;
+      margin-top: 2rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      padding: 6rem 0 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+    }
+
+    .hero-buttons {
+      flex-direction: column;
+    }
+
+    .btn {
+      width: 100%;
+      text-align: center;
+    }
+  }
+</style>
