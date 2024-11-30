@@ -1,0 +1,142 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="404 - Página no encontrada | NovaCode">
+  <div class="error-page">
+    <div class="container">
+      <div class="error-content">
+        <h1 class="glitch" data-text="404">404</h1>
+        <h2>¡Ups! Parece que te has perdido en el ciberespacio</h2>
+        <p>La página que buscas no existe o ha sido movida a otra ubicación.</p>
+        <div class="actions">
+          <a href="/" class="btn btn-primary">Volver al Inicio</a>
+          <a href="#contacto" class="btn btn-secondary">Contactarnos</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .error-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    text-align: center;
+  }
+
+  .error-content {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .glitch {
+    font-size: 8rem;
+    font-weight: bold;
+    position: relative;
+    text-shadow: 0.05em 0 0 var(--accent), -0.025em -0.05em 0 var(--secondary),
+                 0.025em 0.05em 0 var(--highlight);
+    animation: glitch 1s infinite;
+    margin-bottom: 1rem;
+    letter-spacing: 0.2em;
+  }
+
+  @keyframes glitch {
+    0% {
+      text-shadow: 0.05em 0 0 var(--accent), -0.025em -0.05em 0 var(--secondary),
+                   0.025em 0.05em 0 var(--highlight);
+    }
+    14% {
+      text-shadow: 0.05em 0 0 var(--accent), -0.025em -0.05em 0 var(--secondary),
+                   0.025em 0.05em 0 var(--highlight);
+    }
+    15% {
+      text-shadow: -0.05em -0.025em 0 var(--accent), 0.025em 0.025em 0 var(--secondary),
+                   -0.05em -0.05em 0 var(--highlight);
+    }
+    49% {
+      text-shadow: -0.05em -0.025em 0 var(--accent), 0.025em 0.025em 0 var(--secondary),
+                   -0.05em -0.05em 0 var(--highlight);
+    }
+    50% {
+      text-shadow: 0.025em 0.05em 0 var(--accent), 0.05em 0 0 var(--secondary),
+                   0 -0.05em 0 var(--highlight);
+    }
+    99% {
+      text-shadow: 0.025em 0.05em 0 var(--accent), 0.05em 0 0 var(--secondary),
+                   0 -0.05em 0 var(--highlight);
+    }
+    100% {
+      text-shadow: -0.025em 0 0 var(--accent), -0.025em -0.025em 0 var(--secondary),
+                   -0.025em -0.05em 0 var(--highlight);
+    }
+  }
+
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, var(--text-primary), var(--secondary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  p {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+  }
+
+  .actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  .btn {
+    padding: 0.8em 1.6em;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .btn-primary {
+    background: var(--secondary);
+    color: white;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(185, 120, 204, 0.4);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--text-primary);
+    border: 2px solid var(--secondary);
+  }
+
+  .btn-secondary:hover {
+    background: var(--secondary);
+    color: white;
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 768px) {
+    .glitch {
+      font-size: 6rem;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+    }
+
+    .actions {
+      flex-direction: column;
+    }
+  }
+</style>
