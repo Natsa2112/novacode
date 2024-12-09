@@ -135,7 +135,7 @@
 
   .contact-form {
     background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(237, 14, 14, 0.05);
     border-radius: 20px;
     padding: 2rem;
     backdrop-filter: blur(10px);
@@ -173,6 +173,18 @@
     background-repeat: no-repeat;
     background-position: right 1rem center;
     background-size: 1em;
+  }
+
+  select option {
+    background-color: #1a1a1a;
+    color: var(--text-primary);
+    padding: 1rem;
+  }
+
+  select:focus {
+    outline: none;
+    border-color: var(--secondary);
+    box-shadow: 0 0 0 2px rgba(185, 120, 204, 0.2);
   }
 
   .btn {
