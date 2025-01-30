@@ -8,7 +8,5 @@ export default defineConfig({
   base: '/',
   trailingSlash: 'never',
   output: 'server',
-  adapter: cloudflare({
-    functionPerRoutes: true
-  })
+  adapter: cloudflare()
 });
