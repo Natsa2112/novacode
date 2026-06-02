@@ -17,8 +17,20 @@
     "cf:deploy": "wrangler deploy",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
+    "lint:staged": "eslint --no-warn-ignored --max-warnings 0",
+    "typecheck": "astro check",
     "format": "prettier --write \"**/*.{astro,ts,tsx,js,jsx,json,md,yml,yaml}\"",
-    "format:check": "prettier --check \"**/*.{astro,ts,tsx,js,jsx,json,md,yml,yaml}\""
+    "format:check": "prettier --check \"**/*.{astro,ts,tsx,js,jsx,json,md,yml,yaml}\"",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.{astro,ts,tsx,js,jsx}": [
+      "prettier --check",
+      "npm run lint:staged --"
+    ],
+    "*.{json,md,yml,yaml}": [
+      "prettier --check"
+    ]
   },
   "dependencies": {
     "@astrojs/cloudflare": "^13.6.0",
@@ -33,6 +45,8 @@
     "eslint": "^10.4.1",
     "eslint-plugin-astro": "^1.7.0",
     "globals": "^17.6.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^17.0.7",
     "prettier": "^3.8.3",
     "prettier-plugin-astro": "^0.14.1",
     "typescript": "^6.0.3",
