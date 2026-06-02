@@ -4,9 +4,6 @@ dist/
 # generated types
 .astro/
 
-# wrangler local state (dev/preview)
-.wrangler/
-
 # dependencies
 node_modules/
 
@@ -19,10 +16,12 @@ pnpm-debug.log*
 # environment variables
 .env
 .env.production
-.dev.vars
 
 # macOS-specific files
 .DS_Store
 
 # jetbrains setting folder
 .idea/
+
+# Plan de actualización - novacode.com.ar
+updateweb.md
