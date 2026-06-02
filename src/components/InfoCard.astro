@@ -1,0 +1,15 @@
+---
+import type { ContactInfo } from '../types';
+
+interface Props {
+  info: ContactInfo;
+}
+
+const { info } = Astro.props;
+---
+
+<div class="info-card">
+  <div class="icon" aria-hidden="true">{info.emoji}</div>
+  <h3>{info.title}</h3>
+  <p>{info.description}</p>
+</div>

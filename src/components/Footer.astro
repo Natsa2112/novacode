@@ -1,5 +1,6 @@
 ---
 import { Image } from 'astro:assets';
+import Icon from './Icon.astro';
 import logo from '../assets/logo.svg';
 import { site, socials, sections } from '../config/site';
 ---
@@ -15,26 +16,32 @@ import { site, socials, sections } from '../config/site';
       <div class="footer-links">
         <h3>Enlaces rápidos</h3>
         <ul>
-          {sections.map((s) => (
-            <li><a href={s.href}>{s.label}</a></li>
-          ))}
+          {
+            sections.map((s) => (
+              <li>
+                <a href={s.href}>{s.label}</a>
+              </li>
+            ))
+          }
         </ul>
       </div>
       <div class="footer-social">
         <h3>Redes sociales</h3>
         <ul>
-          {socials.map((s) => (
-            <li>
-              <a href={s.href} aria-label={s.name} target="_blank" rel="noopener noreferrer">
-                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" data-icon={s.icon}>
-                  {s.icon === 'facebook' && <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>}
-                  {s.icon === 'twitter' && (<><path d="M4 4l16 16"/><path d="M20 4L4 20"/></>)}
-                  {s.icon === 'instagram' && (<><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></>)}
-                  {s.icon === 'linkedin' && (<><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></>)}
-                </svg>
-              </a>
-            </li>
-          ))}
+          {
+            socials.map((s) => (
+              <li>
+                <a
+                  href={s.href}
+                  aria-label={s.name}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Icon name={s.icon} size={22} />
+                </a>
+              </li>
+            ))
+          }
         </ul>
       </div>
       <div class="footer-copyright">
@@ -45,114 +52,117 @@ import { site, socials, sections } from '../config/site';
 </footer>
 
 <style>
-.footer {
-  background-color: #000;
-  color: #fff;
-}
+  .footer {
+    background-color: #000;
+    color: #fff;
+  }
 
-.footer-content {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  background-color: #000000;
-  padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 0 10px #87da4a33;
-  gap: 2rem;
-}
+  .footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: #000000;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #87da4a33;
+    gap: 2rem;
+  }
 
-.footer-logo {
-  margin-bottom: 2rem;
-  flex: 1 1 200px;
-}
+  .footer-logo {
+    margin-bottom: 2rem;
+    flex: 1 1 200px;
+  }
 
-.footer-logo a {
-  display: inline-block;
-  line-height: 0;
-}
+  .footer-logo a {
+    display: inline-block;
+    line-height: 0;
+  }
 
-.footer-links {
-  margin-bottom: 2rem;
-  flex: 1 1 200px;
-}
+  .footer-links {
+    margin-bottom: 2rem;
+    flex: 1 1 200px;
+  }
 
-.footer-links h3 {
-  font-size: 18px;
-  margin-bottom: 1rem;
-  color: #b978cc;
-}
+  .footer-links h3 {
+    font-size: 18px;
+    margin-bottom: 1rem;
+    color: #b978cc;
+  }
 
-.footer-links ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
+  .footer-links ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
 
-.footer-links li {
-  margin-bottom: 1rem;
-}
+  .footer-links li {
+    margin-bottom: 1rem;
+  }
 
-.footer-links a {
-  color: #fff;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
+  .footer-links a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
 
-.footer-links a:hover {
-  color: #ffbb00;
-}
+  .footer-links a:hover {
+    color: #ffbb00;
+  }
 
-.footer-social {
-  margin-bottom: 2rem;
-  flex: 1 1 200px;
-}
+  .footer-social {
+    margin-bottom: 2rem;
+    flex: 1 1 200px;
+  }
 
-.footer-social h3 {
-  font-size: 18px;
-  margin-bottom: 1rem;
-  color: #b978cc;
-}
+  .footer-social h3 {
+    font-size: 18px;
+    margin-bottom: 1rem;
+    color: #b978cc;
+  }
 
-.footer-social ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  gap: 1rem;
-}
+  .footer-social ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 1rem;
+  }
 
-.footer-social li {
-  margin-bottom: 0;
-}
+  .footer-social li {
+    margin-bottom: 0;
+  }
 
-.footer-social a {
-  color: #fff;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  transition: color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
-}
+  .footer-social a {
+    color: #fff;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    transition:
+      color 0.3s ease,
+      border-color 0.3s ease,
+      transform 0.3s ease;
+  }
 
-.footer-social a:hover {
-  color: #ffbb00;
-  border-color: #ffbb00;
-  transform: translateY(-2px);
-}
+  .footer-social a:hover {
+    color: #ffbb00;
+    border-color: #ffbb00;
+    transform: translateY(-2px);
+  }
 
-.footer-copyright {
-  width: 100%;
-  margin-top: 1rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  color: #666;
-  font-size: 0.875rem;
-  text-align: center;
-}
+  .footer-copyright {
+    width: 100%;
+    margin-top: 1rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: #666;
+    font-size: 0.875rem;
+    text-align: center;
+  }
 </style>

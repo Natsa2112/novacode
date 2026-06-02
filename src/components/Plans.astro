@@ -1,66 +1,19 @@
 ---
+import PlanCard from './PlanCard.astro';
+import { plans } from '../config/site';
 ---
- 
+
 <section id="planes" class="section">
   <div class="container">
     <h2 class="section-title">Planes a Tu Medida.</h2>
     <p class="section-subtitle">
-        Entendemos que cada empresa es única, por eso ofrecemos planes flexibles que se adaptan a tus necesidades específicas. Desde emprendedores hasta grandes compañías, tenemos la solución ideal para ti.
+      Entendemos que cada empresa es única, por eso ofrecemos planes flexibles que se adaptan
+      a tus necesidades específicas. Desde emprendedores hasta grandes compañías, tenemos la
+      solución ideal para ti.
     </p>
 
     <div class="plans-grid">
-      <!-- Plan Básico -->
-      <div class="plan-card">
-        <div class="plan-header">
-          <h3>Plan Básico</h3>
-          <p class="plan-description">Ideal para pequeños negocios que inician su presencia digital</p>
-        </div>
-        <ul class="features">
-          <li>Sitio Web Responsive</li>
-          <li>Hasta 5 Páginas</li>
-          <li>SEO Básico</li>
-          <li>Formulario de Contacto</li>
-          <li>Integración con Redes Sociales</li>
-        </ul>
-        <a href="#contacto" class="btn btn-outline">Comenzar Ahora</a>
-      </div>
-
-      <!-- Plan Profesional -->
-      <div class="plan-card featured">
-        <div class="plan-badge">Más Popular</div>
-        <div class="plan-header">
-          <h3>Plan Profesional</h3>
-          <p class="plan-description">Perfecto para empresas en crecimiento</p>
-        </div>
-        <ul class="features">
-          <li>Todo del Plan Básico</li>
-          <li>Hasta 10 Páginas</li>
-          <li>Blog Integrado</li>
-          <li>SEO Avanzado</li>
-          <li>Analytics y Reportes</li>
-          <li>Optimización de Conversión</li>
-          <li>Soporte Premium</li>
-        </ul>
-        <a href="#contacto" class="btn btn-primary">Empezar Ahora</a>
-      </div>
-
-      <!-- Plan Empresarial -->
-      <div class="plan-card">
-        <div class="plan-header">
-          <h3>Plan Empresarial</h3>
-          <p class="plan-description">Solución completa para grandes empresas</p>
-        </div>
-        <ul class="features">
-          <li>Todo del Plan Profesional</li>
-          <li>Páginas Ilimitadas</li>
-          <li>E-commerce Integrado</li>
-          <li>Panel de Administración</li>
-          <li>API Personalizada</li>
-          <li>Seguridad Avanzada</li>
-          <li>Soporte 24/7</li>
-        </ul>
-        <a href="#contacto" class="btn btn-outline">Contactar</a>
-      </div>
+      {plans.map((plan) => <PlanCard plan={plan} />)}
     </div>
   </div>
 </section>
@@ -79,7 +32,9 @@
     border-radius: 20px;
     padding: 2rem;
     text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
     position: relative;
     backdrop-filter: blur(10px);
   }
@@ -120,30 +75,13 @@
     margin-bottom: 2rem;
   }
 
-  .plan-header h3 {
+  .plan-header :global(h3) {
     font-size: 1.8rem;
     margin-bottom: 1rem;
     background: linear-gradient(135deg, var(--text-primary), var(--secondary));
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-  }
-
-  .price {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--text-primary);
-    margin-bottom: 1rem;
-  }
-
-  .currency {
-    font-size: 1.5rem;
-    vertical-align: super;
-  }
-
-  .period {
-    font-size: 1rem;
-    color: var(--text-secondary);
   }
 
   .plan-description {
@@ -159,13 +97,13 @@
     margin-bottom: 2rem;
   }
 
-  .features li {
+  .features :global(li) {
     color: var(--text-secondary);
     padding: 0.8rem 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   }
 
-  .features li:last-child {
+  .features :global(li:last-child) {
     border-bottom: none;
   }
 

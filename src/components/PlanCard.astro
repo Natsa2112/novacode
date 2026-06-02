@@ -1,0 +1,25 @@
+---
+import type { Plan } from '../types';
+
+interface Props {
+  plan: Plan;
+}
+
+const { plan } = Astro.props;
+---
+
+<div class:list={['plan-card', { featured: plan.featured }]}>
+  {plan.badge && <div class="plan-badge">{plan.badge}</div>}
+  <div class="plan-header">
+    <h3>{plan.name}</h3>
+    <p class="plan-description">{plan.description}</p>
+  </div>
+  <ul class="features">
+    {
+      plan.features.map((f) => (
+        <li>{f}</li>
+      ))
+    }
+  </ul>
+  <a href={plan.cta.href} class:list={['btn', `btn-${plan.cta.variant}`]}>{plan.cta.label}</a>
+</div>
