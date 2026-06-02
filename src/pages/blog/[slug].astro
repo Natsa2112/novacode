@@ -1,0 +1,120 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts', ({ data }) => !data.draft);
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+
+interface Props {
+  post: CollectionEntry<'posts'>;
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const formatDate = (date: Date) =>
+  date.toLocaleDateString('es-AR', { year: 'numeric', month: 'long', day: 'numeric' });
+---
+
+<Layout title={`${post.data.title} | NovaCode`} description={post.data.description}>
+  <main id="main-content" class="container blog-post">
+    <a href="/blog" class="blog-post__back">← Volver al blog</a>
+    <article>
+      <header class="blog-post__header">
+        <time datetime={post.data.pubDate.toISOString()} class="blog-post__date">
+          {formatDate(post.data.pubDate)}
+        </time>
+        <h1 class="blog-post__title">{post.data.title}</h1>
+        {post.data.description && <p class="blog-post__lead">{post.data.description}</p>}
+      </header>
+      <div class="blog-post__body">
+        <Content />
+      </div>
+    </article>
+  </main>
+</Layout>
+
+<style>
+  .blog-post {
+    padding: 4rem 1.25rem;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .blog-post__back {
+    display: inline-block;
+    color: var(--secondary);
+    text-decoration: none;
+    margin-bottom: 2rem;
+    font-size: 0.95rem;
+  }
+
+  .blog-post__back:hover,
+  .blog-post__back:focus-visible {
+    text-decoration: underline;
+  }
+
+  .blog-post__header {
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .blog-post__date {
+    display: block;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .blog-post__title {
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    margin: 0 0 1rem;
+    line-height: 1.2;
+  }
+
+  .blog-post__lead {
+    color: var(--text-secondary);
+    font-size: 1.15rem;
+    margin: 0;
+  }
+
+  .blog-post__body :global(h2) {
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+  }
+
+  .blog-post__body :global(p),
+  .blog-post__body :global(ul),
+  .blog-post__body :global(ol) {
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.88);
+  }
+
+  .blog-post__body :global(blockquote) {
+    margin: 1.5rem 0;
+    padding: 1rem 1.5rem;
+    border-left: 3px solid var(--secondary);
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--text-secondary);
+    font-style: italic;
+  }
+
+  .blog-post__body :global(code) {
+    font-family:
+      ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', monospace;
+    font-size: 0.9em;
+    padding: 0.15em 0.4em;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 4px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .blog-post__back {
+      transition: none;
+    }
+  }
+</style>

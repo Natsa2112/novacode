@@ -1,6 +1,7 @@
 ---
 import '@fontsource-variable/inter';
 import '../styles/global.css';
+import { ClientRouter } from 'astro:transitions';
 import { site } from '../config/site';
 
 interface Props {
@@ -24,6 +25,7 @@ const ogImage = new URL(image, Astro.site).toString();
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="canonical" href={canonical} />
     <title>{title}</title>
+    <ClientRouter />
 
     <meta property="og:type" content="website" />
     <meta property="og:locale" content={site.locale} />
