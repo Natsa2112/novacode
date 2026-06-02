@@ -2,7 +2,7 @@
 import { Image } from 'astro:assets';
 import Icon from './Icon.astro';
 import logo from '../assets/logo.svg';
-import { site, socials, sections } from '../config/site';
+import { site, socials, sections, legalLinks } from '../config/site';
 ---
 
 <footer class="footer">
@@ -20,6 +20,18 @@ import { site, socials, sections } from '../config/site';
             sections.map((s) => (
               <li>
                 <a href={s.href}>{s.label}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+      <div class="footer-legal">
+        <h3>Legal</h3>
+        <ul>
+          {
+            legalLinks.map((l) => (
+              <li>
+                <a href={l.href}>{l.label}</a>
               </li>
             ))
           }
@@ -103,6 +115,38 @@ import { site, socials, sections } from '../config/site';
   }
 
   .footer-links a:hover {
+    color: #ffbb00;
+  }
+
+  .footer-legal {
+    margin-bottom: 2rem;
+    flex: 1 1 200px;
+  }
+
+  .footer-legal h3 {
+    font-size: 18px;
+    margin-bottom: 1rem;
+    color: #b978cc;
+  }
+
+  .footer-legal ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .footer-legal li {
+    margin-bottom: 1rem;
+  }
+
+  .footer-legal a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-size: 0.95rem;
+  }
+
+  .footer-legal a:hover {
     color: #ffbb00;
   }
 

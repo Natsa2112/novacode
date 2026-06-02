@@ -124,3 +124,8 @@ export const contactInfo: readonly ContactInfo[] = [
   { emoji: '📧', title: 'Email', description: 'info@novacode.com.ar' },
   { emoji: '📱', title: 'Teléfono', description: '+54 9 11 5734-5989' },
 ];
+
+export const legalLinks = [
+  { label: 'Política de Privacidad', href: '/privacidad' },
+  { label: 'Términos y Condiciones', href: '/terminos' },
+] as const;

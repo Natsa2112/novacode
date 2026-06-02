@@ -1,0 +1,177 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { site } from '../config/site';
+---
+
+<Layout
+  title="Términos y Condiciones | NovaCode"
+  description="Términos y condiciones de uso del sitio web de NovaCode."
+>
+  <main id="main-content" class="container legal-page">
+    <a href="/" class="legal-page__back">← Volver al inicio</a>
+
+    <article class="legal-article">
+      <header>
+        <h1>Términos y Condiciones</h1>
+        <p class="legal-article__updated">Última actualización: junio de 2026</p>
+      </header>
+
+      <section>
+        <h2>1. Aceptación</h2>
+        <p>
+          Al acceder y utilizar este sitio web de <strong>{site.name}</strong>, aceptás estos
+          términos y condiciones en su totalidad. Si no estás de acuerdo con alguno de ellos, por
+          favor no utilices el sitio.
+        </p>
+      </section>
+
+      <section>
+        <h2>2. Descripción del servicio</h2>
+        <p>
+          NovaCode es una agencia digital que ofrece servicios de desarrollo web, marketing digital,
+          ecommerce, diseño y branding. La información publicada en este sitio es de carácter
+          informativo y no constituye una oferta vinculante; los presupuestos y propuestas se
+          formalizan por escrito tras una consulta directa.
+        </p>
+      </section>
+
+      <section>
+        <h2>3. Uso del sitio</h2>
+        <p>Te comprometés a utilizar el sitio de manera lícita y respetuosa. En particular:</p>
+        <ul>
+          <li>No intentarás acceder a áreas restringidas o sistemas sin autorización.</li>
+          <li>
+            No enviarás contenido ilegal, ofensivo, difamatorio o que vulnere derechos de terceros.
+          </li>
+          <li>
+            No introducirás virus, malware ni realizarás acciones que comprometan la seguridad.
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>4. Propiedad intelectual</h2>
+        <p>
+          Los contenidos del sitio (textos, imágenes, logos, código fuente, diseño) son propiedad de
+          NovaCode o de sus titulares y están protegidos por las leyes de propiedad intelectual. No
+          podés reproducirlos, distribuirlos o modificarlos sin autorización previa y por escrito,
+          salvo para uso personal y no comercial.
+        </p>
+      </section>
+
+      <section>
+        <h2>5. Enlaces a terceros</h2>
+        <p>
+          Podemos incluir enlaces a sitios de terceros con fines informativos. NovaCode no se
+          responsabiliza por el contenido, las políticas ni las prácticas de esos sitios.
+        </p>
+      </section>
+
+      <section>
+        <h2>6. Limitación de responsabilidad</h2>
+        <p>
+          NovaCode no garantiza la disponibilidad ininterrumpida del sitio ni la ausencia total de
+          errores. No seremos responsables por daños directos, indirectos, incidentales o
+          consecuentes derivados del uso o la imposibilidad de usar el sitio, incluyendo lucro
+          cesante o pérdida de datos.
+        </p>
+      </section>
+
+      <section>
+        <h2>7. Servicios contratados</h2>
+        <p>
+          Las condiciones específicas de cada proyecto (alcance, plazos, pagos, entregables,
+          confidencialidad) se regulan en la propuesta comercial firmada por ambas partes, que
+          prevalece sobre estos términos generales en caso de discrepancia.
+        </p>
+      </section>
+
+      <section>
+        <h2>8. Modificaciones</h2>
+        <p>
+          Podemos modificar estos términos en cualquier momento. Las modificaciones serán publicadas
+          en esta misma URL y entrarán en vigor desde su publicación. Te recomendamos revisarlos
+          periódicamente.
+        </p>
+      </section>
+
+      <section>
+        <h2>9. Ley aplicable y jurisdicción</h2>
+        <p>
+          Estos términos se rigen por las leyes de la República Argentina. Para cualquier
+          controversia derivada de su interpretación o aplicación, las partes se someten a los
+          tribunales ordinarios de la Ciudad Autónoma de Buenos Aires, con renuncia expresa a
+          cualquier otro fuero.
+        </p>
+      </section>
+
+      <section>
+        <h2>10. Contacto</h2>
+        <p>
+          Por consultas sobre estos términos, escribinos a
+          <a href={`mailto:${site.email}`}>{site.email}</a>.
+        </p>
+      </section>
+    </article>
+  </main>
+</Layout>
+
+<style>
+  .legal-page {
+    padding: 3rem 1.25rem 4rem;
+    max-width: 760px;
+    margin: 0 auto;
+    color: var(--text-primary, #fff);
+  }
+
+  .legal-page__back {
+    display: inline-block;
+    color: var(--secondary, #b978cc);
+    text-decoration: none;
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+  }
+
+  .legal-page__back:hover,
+  .legal-page__back:focus-visible {
+    text-decoration: underline;
+  }
+
+  .legal-article__updated {
+    color: var(--text-secondary, rgba(255, 255, 255, 0.7));
+    font-style: italic;
+    margin: 0;
+  }
+
+  .legal-article :global(h1) {
+    margin-top: 0;
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+  }
+
+  .legal-article :global(h2) {
+    margin-top: 2.5rem;
+    margin-bottom: 0.75rem;
+    font-size: 1.3rem;
+    color: var(--secondary, #b978cc);
+  }
+
+  .legal-article :global(p),
+  .legal-article :global(ul) {
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.88);
+  }
+
+  .legal-article :global(ul) {
+    padding-left: 1.5rem;
+  }
+
+  .legal-article :global(a) {
+    color: var(--secondary, #b978cc);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .legal-page__back {
+      transition: none;
+    }
+  }
+</style>

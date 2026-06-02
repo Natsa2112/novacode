@@ -1,0 +1,202 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { site } from '../config/site';
+---
+
+<Layout
+  title="Política de Privacidad | NovaCode"
+  description="Cómo NovaCode protege tus datos personales conforme a la Ley 25.326 de Protección de Datos Personales de Argentina."
+>
+  <main id="main-content" class="container legal-page">
+    <a href="/" class="legal-page__back">← Volver al inicio</a>
+
+    <article class="legal-article">
+      <header>
+        <h1>Política de Privacidad</h1>
+        <p class="legal-article__updated">Última actualización: junio de 2026</p>
+      </header>
+
+      <section>
+        <h2>1. Identificación del responsable</h2>
+        <p>
+          <strong>{site.name}</strong> (en adelante, "NovaCode"), con domicilio en Buenos Aires, Argentina,
+          es el responsable del tratamiento de los datos personales que se recolectan a través de este
+          sitio web. Para cualquier consulta relativa a privacidad podés escribirnos a
+          <a href={`mailto:${site.email}`}>{site.email}</a>.
+        </p>
+      </section>
+
+      <section>
+        <h2>2. Datos que recolectamos</h2>
+        <p>Cuando completás el formulario de contacto, recolectamos:</p>
+        <ul>
+          <li>Nombre y apellido</li>
+          <li>Dirección de correo electrónico</li>
+          <li>Teléfono (opcional)</li>
+          <li>Servicio de interés</li>
+          <li>Mensaje libre</li>
+        </ul>
+        <p>
+          Adicionalmente, podemos recolectar datos técnicos de navegación (dirección IP, navegador,
+          sistema operativo, páginas visitadas) mediante cookies y registros del servidor con el fin
+          de mantener la seguridad y mejorar el sitio.
+        </p>
+      </section>
+
+      <section>
+        <h2>3. Finalidad del tratamiento</h2>
+        <p>Usamos tus datos personales para:</p>
+        <ul>
+          <li>Responder consultas y presupuestos solicitados por vos.</li>
+          <li>Proveer los servicios contratados.</li>
+          <li>Cumplir con obligaciones legales y fiscales.</li>
+          <li>Mejorar nuestro sitio y prevenir abusos o ataques.</li>
+        </ul>
+        <p>No vendemos ni cedemos tus datos a terceros con fines comerciales.</p>
+      </section>
+
+      <section>
+        <h2>4. Almacenamiento y transferencias</h2>
+        <p>
+          Los datos del formulario se envían por correo electrónico a través del servicio
+          <strong> Resend</strong> y se almacenan temporalmente en la infraestructura de
+          <strong>Cloudflare</strong>, proveedores que pueden alojar datos fuera de Argentina. Estos
+          proveedores cumplen con estándares internacionales de protección de datos.
+        </p>
+        <p>
+          Conservamos los datos durante el tiempo necesario para cumplir la finalidad para la que
+          fueron recolectados y, posteriormente, durante el plazo legal aplicable.
+        </p>
+      </section>
+
+      <section>
+        <h2>5. Derechos ARCO (Ley 25.326)</h2>
+        <p>
+          De conformidad con la Ley 25.326 de Protección de Datos Personales, tenés los siguientes
+          derechos:
+        </p>
+        <dl class="legal-dl">
+          <dt>Acceso</dt>
+          <dd>Solicitar información sobre qué datos tuyos tenemos.</dd>
+          <dt>Rectificación</dt>
+          <dd>Corregir datos inexactos, incompletos o desactualizados.</dd>
+          <dt>Cancelación</dt>
+          <dd>Solicitar la eliminación de tus datos cuando ya no sean necesarios.</dd>
+          <dt>Oposición</dt>
+          <dd>Oponerte al tratamiento de tus datos en los casos previstos por la ley.</dd>
+        </dl>
+        <p>
+          Para ejercer cualquiera de estos derechos, escribinos a
+          <a href={`mailto:${site.email}`}>{site.email}</a> con tu nombre y una descripción del derecho
+          que querés ejercer. Responderemos en los plazos previstos por la normativa vigente.
+        </p>
+      </section>
+
+      <section>
+        <h2>6. Autoridad de aplicación</h2>
+        <p>
+          La <strong>Agencia de Acceso a la Información Pública (AAIP)</strong>, en su carácter de
+          Órgano de Control de la Ley 25.326, tiene la atribución de atender las denuncias y
+          reclamos de los titulares de datos. Podés contactarla en
+          <a href="https://www.argentina.gob.ar/aaip" target="_blank" rel="noopener noreferrer"
+            >argentina.gob.ar/aaip</a
+          >.
+        </p>
+      </section>
+
+      <section>
+        <h2>7. Cookies</h2>
+        <p>
+          Este sitio no utiliza cookies de seguimiento publicitario. Podés navegar con cookies
+          deshabilitadas sin perder funcionalidad.
+        </p>
+      </section>
+
+      <section>
+        <h2>8. Cambios a esta política</h2>
+        <p>
+          Podemos modificar esta política para reflejar cambios legales o en nuestras prácticas. La
+          fecha de la última actualización se indica al inicio de este documento. Te recomendamos
+          revisarla periódicamente.
+        </p>
+      </section>
+    </article>
+  </main>
+</Layout>
+
+<style>
+  .legal-page {
+    padding: 3rem 1.25rem 4rem;
+    max-width: 760px;
+    margin: 0 auto;
+    color: var(--text-primary, #fff);
+  }
+
+  .legal-page__back {
+    display: inline-block;
+    color: var(--secondary, #b978cc);
+    text-decoration: none;
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+  }
+
+  .legal-page__back:hover,
+  .legal-page__back:focus-visible {
+    text-decoration: underline;
+  }
+
+  .legal-article__updated {
+    color: var(--text-secondary, rgba(255, 255, 255, 0.7));
+    font-style: italic;
+    margin: 0;
+  }
+
+  .legal-article :global(h1) {
+    margin-top: 0;
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+  }
+
+  .legal-article :global(h2) {
+    margin-top: 2.5rem;
+    margin-bottom: 0.75rem;
+    font-size: 1.3rem;
+    color: var(--secondary, #b978cc);
+  }
+
+  .legal-article :global(p),
+  .legal-article :global(ul),
+  .legal-article :global(dl) {
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.88);
+  }
+
+  .legal-article :global(ul) {
+    padding-left: 1.5rem;
+  }
+
+  .legal-article :global(a) {
+    color: var(--secondary, #b978cc);
+  }
+
+  .legal-dl {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 0.25rem 1rem;
+    margin: 1rem 0;
+  }
+
+  .legal-dl dt {
+    font-weight: 600;
+    color: var(--secondary, #b978cc);
+  }
+
+  .legal-dl dd {
+    margin: 0;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .legal-page__back {
+      transition: none;
+    }
+  }
+</style>
