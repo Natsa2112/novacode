@@ -14,7 +14,7 @@ Marca con `[x]` las etapas que se van a ejecutar. Las que queden sin marcar qued
 - [x] **Etapa 2** — Seguridad y configuración del proyecto (🟠)
 - [x] **Etapa 3** — Rendimiento y SEO (🟡)
 - [x] **Etapa 4** — Accesibilidad (a11y) (🟢)
-- [ ] **Etapa 5** — Calidad de código y DX (🔵)
+- [x] **Etapa 5** — Calidad de código y DX (🔵)
 - [ ] **Etapa 6** — Funcionalidades nuevas / opcional (⚪)
 
 ## Progreso general
@@ -25,9 +25,9 @@ Marca con `[x]` las etapas que se van a ejecutar. Las que queden sin marcar qued
 | Etapa 2 — Seguridad y config (🟠)     | 6      | ✅ Completada |
 | Etapa 3 — Rendimiento y SEO (🟡)      | 12     | ✅ Completada |
 | Etapa 4 — Accesibilidad (a11y) (🟢)   | 9      | ✅ Completada |
-| Etapa 5 — Calidad y DX (🔵)           | 12     | ⏳ Pendiente  |
+| Etapa 5 — Calidad y DX (🔵)           | 12     | ✅ Completada |
 | Etapa 6 — Nuevas funcionalidades (⚪) | 4      | ⏳ Pendiente  |
-| **Total**                             | **51** | **35 / 51**   |
+| **Total**                             | **51** | **47 / 51**   |
 
 > Actualizá la columna "Estado" a `🔄 En curso` o `✅ Completada` y el contador `0/51` a medida que avances.
 
@@ -102,18 +102,18 @@ Marca con `[x]` las etapas que se van a ejecutar. Las que queden sin marcar qued
 
 > 12 tareas. Dejar el código mantenible y preparado para el equipo.
 
-- [ ] Crear `src/types/index.ts` con tipos para `Plan`, `Service`, `SocialLink`. Las cards de `Services.astro` y `Plans.astro` deberían iterar arrays tipados, no tener HTML repetido.
-- [ ] Refactorizar `src/components/Services.astro` y `src/components/Plans.astro` — los tres `card` están duplicados. Convertir cada uno a un subcomponente `<ServiceCard title="..." icon="...">` que reciba props.
-- [ ] Refactorizar `src/components/Contact.astro` — los tres `info-card` están duplicados. Misma estrategia: componente reutilizable.
-- [ ] Convertir los SVG inline a un componente `<Icon name="instagram" />` centralizado en `src/components/Icon.astro` con un map `name -> svg`. Reduce peso y facilita el cambio a un set de iconos (Lucide, Tabler) más adelante.
-- [ ] Ampliar `tsconfig.json` con `compilerOptions` explícitos: `baseUrl: "."`, `paths: { "~/*": ["src/*"] }`, y referencia a `types: ["astro/client"]`. Hoy hereda solo de `astro/tsconfigs/strict` sin path aliases.
-- [ ] Configurar Prettier (`.prettierrc.json` con `printWidth: 100`, `singleQuote: true`) y un script `format` en `package.json`.
-- [ ] Configurar ESLint con `eslint-plugin-astro` y un script `lint`. Hay varios `querySelector` inseguros en `Header.astro:199` que un linter podría detectar.
-- [ ] Actualizar el `README.md` — actualmente es el del template `astro@latest --template basics`. Sustituirlo por uno real del proyecto con descripción, requisitos, comandos y deploy.
-- [ ] Confirmar que `package-lock.json` está commiteado y que `npm ci` se usa en CI en lugar de `npm install` (es lo recomendado para aplicaciones).
-- [ ] Añadir `.nvmrc` con la versión de Node (ej. `20`) para uniformidad entre entornos.
-- [ ] Configurar GitHub Actions (`.github/workflows/ci.yml`) que ejecute `npm ci`, `npm run lint` y `npm run build` en cada PR.
-- [ ] Reemplazar los `<script>` inline de `Header.astro` y `gracias.astro` por scripts con `is:inline` explícito o migrarlos a `client-side framework islands` solo si hace falta interactividad (no es el caso aquí).
+- [x] Crear `src/types/index.ts` con tipos para `Plan`, `Service`, `SocialLink`. Las cards de `Services.astro` y `Plans.astro` deberían iterar arrays tipados, no tener HTML repetido.
+- [x] Refactorizar `src/components/Services.astro` y `src/components/Plans.astro` — los tres `card` están duplicados. Convertir cada uno a un subcomponente `<ServiceCard title="..." icon="...">` que reciba props.
+- [x] Refactorizar `src/components/Contact.astro` — los tres `info-card` están duplicados. Misma estrategia: componente reutilizable.
+- [x] Convertir los SVG inline a un componente `<Icon name="instagram" />` centralizado en `src/components/Icon.astro` con un map `name -> svg`. Reduce peso y facilita el cambio a un set de iconos (Lucide, Tabler) más adelante.
+- [x] Ampliar `tsconfig.json` con `compilerOptions` explícitos: `baseUrl: "."`, `paths: { "~/*": ["src/*"] }`, y referencia a `types: ["astro/client"]`. Hoy herede solo de `astro/tsconfigs/strict` sin path aliases.
+- [x] Configurar Prettier (`.prettierrc.json` con `printWidth: 100`, `singleQuote: true`) y un script `format` en `package.json`.
+- [x] Configurar ESLint con `eslint-plugin-astro` y un script `lint`. Hay varios `querySelector` inseguros en `Header.astro:199` que un linter podría detectar.
+- [x] Actualizar el `README.md` — actualmente es el del template `astro@latest --template basics`. Sustituirlo por uno real del proyecto con descripción, requisitos, comandos y deploy.
+- [x] Confirmar que `package-lock.json` está commiteado y que `npm ci` se usa en CI en lugar de `npm install` (es lo recomendado para aplicaciones).
+- [x] Añadir `.nvmrc` con la versión de Node (ej. `20`) para uniformidad entre entornos.
+- [x] Configurar GitHub Actions (`.github/workflows/ci.yml`) que ejecute `npm ci`, `npm run lint` y `npm run build` en cada PR.
+- [x] Reemplazar los `<script>` inline de `Header.astro` y `gracias.astro` por scripts con `is:inline` explícito o migrarlos a `client-side framework islands` solo si hace falta interactividad (no es el caso aquí).
 
 ---
 

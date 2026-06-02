@@ -199,7 +199,7 @@
   }
 </style>
 
-<script>
+<script is:inline>
   const menuBtn = document.getElementById('menuBtn');
   const navLinks = document.getElementById('navLinks');
 
@@ -209,7 +209,7 @@
     const scrollPosition = window.scrollY;
 
     sections.forEach((section) => {
-      const htmlSection = section as HTMLElement;
+      const htmlSection = section;
       const sectionTop = htmlSection.offsetTop - 100;
       const sectionHeight = htmlSection.offsetHeight;
       const sectionId = section.getAttribute('id');
@@ -239,9 +239,9 @@
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('load', updateActiveLink);
 
-  const isOpen = () => navLinks?.classList.contains('active') ?? false;
+  const isOpen = () => navLinks && navLinks.classList.contains('active');
 
-  const setOpen = (open: boolean) => {
+  const setOpen = (open) => {
     if (!menuBtn || !navLinks) return;
     menuBtn.classList.toggle('active', open);
     navLinks.classList.toggle('active', open);
@@ -250,23 +250,27 @@
 
   const openMenu = () => {
     setOpen(true);
-    const firstLink = navLinks?.querySelector<HTMLAnchorElement>('a');
-    firstLink?.focus();
+    const firstLink = navLinks && navLinks.querySelector('a');
+    if (firstLink) firstLink.focus();
   };
 
   const closeMenu = () => {
     setOpen(false);
-    menuBtn?.focus();
+    if (menuBtn) menuBtn.focus();
   };
 
-  menuBtn?.addEventListener('click', () => {
-    if (isOpen()) closeMenu();
-    else openMenu();
-  });
+  if (menuBtn) {
+    menuBtn.addEventListener('click', () => {
+      if (isOpen()) closeMenu();
+      else openMenu();
+    });
+  }
 
-  navLinks?.querySelectorAll('a').forEach((link) => {
-    link.addEventListener('click', () => closeMenu());
-  });
+  if (navLinks) {
+    navLinks.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => closeMenu());
+    });
+  }
 
   document.addEventListener('keydown', (e) => {
     if (!isOpen()) return;
@@ -278,13 +282,13 @@
     }
 
     if (e.key === 'Tab' && navLinks) {
-      const focusable = Array.from(navLinks.querySelectorAll<HTMLElement>('a, button')).filter(
+      const focusable = Array.from(navLinks.querySelectorAll('a, button')).filter(
         (el) => !el.hasAttribute('disabled'),
       );
       if (focusable.length === 0) return;
       const first = focusable[0];
       const last = focusable[focusable.length - 1];
-      const active = document.activeElement as HTMLElement | null;
+      const active = document.activeElement;
 
       if (e.shiftKey && (active === first || !navLinks.contains(active))) {
         e.preventDefault();
