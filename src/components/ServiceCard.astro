@@ -4,18 +4,58 @@ import Icon from './Icon.astro';
 
 interface Props {
   service: Service;
+  index: number;
 }
 
-const { service } = Astro.props;
+const { service, index } = Astro.props;
+const number = String(index + 1).padStart(2, '0');
+const href = '#contacto';
 ---
 
-<div class="card service-card">
-  <div class:list={['service-icon', service.icon]}>
-    <Icon name={service.icon} size={24} />
-  </div>
-  <h3>{service.title}</h3>
-  <p>{service.description}</p>
-  <ul class="service-features">
-    {service.features.map((f) => <li>{f}</li>)}
+<article class="service-card" data-accent={service.icon}>
+  <span class="service-card__border" aria-hidden="true"></span>
+  <span class="service-card__accent" aria-hidden="true"></span>
+  <span class="service-card__pattern" aria-hidden="true"></span>
+
+  <header class="service-card__head">
+    <div class="service-card__icon">
+      <Icon name={service.icon} size={24} />
+      <span class="service-card__spark" aria-hidden="true"></span>
+    </div>
+    <span class="service-card__number" aria-hidden="true">{number}</span>
+  </header>
+
+  <h3 class="service-card__title">{service.title}</h3>
+  <p class="service-card__desc">{service.description}</p>
+
+  <ul class="service-card__features">
+    {
+      service.features.map((f) => (
+        <li>
+          <svg class="service-card__check" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path
+              d="M4.5 10.5l3 3 8-8"
+              stroke="currentColor"
+              stroke-width="2.2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          <span>{f}</span>
+        </li>
+      ))
+    }
   </ul>
-</div>
+
+  <a class="service-card__link" href={href} aria-label={`Conocer más sobre ${service.title}`}>
+    <span>Conocer más</span>
+    <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+      <path
+        d="M4 10h12m0 0l-4-4m4 4l-4 4"
+        stroke="currentColor"
+        stroke-width="1.8"
+        stroke-linecap="round"
+        stroke-linejoin="round"></path>
+    </svg>
+  </a>
+</article>
