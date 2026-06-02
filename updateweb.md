@@ -12,7 +12,7 @@ Marca con `[x]` las etapas que se van a ejecutar. Las que queden sin marcar qued
 
 - [x] **Etapa 1** — Bugs críticos y funcionalidad rota (🔴)
 - [x] **Etapa 2** — Seguridad y configuración del proyecto (🟠)
-- [ ] **Etapa 3** — Rendimiento y SEO (🟡)
+- [x] **Etapa 3** — Rendimiento y SEO (🟡)
 - [ ] **Etapa 4** — Accesibilidad (a11y) (🟢)
 - [ ] **Etapa 5** — Calidad de código y DX (🔵)
 - [ ] **Etapa 6** — Funcionalidades nuevas / opcional (⚪)
@@ -23,11 +23,11 @@ Marca con `[x]` las etapas que se van a ejecutar. Las que queden sin marcar qued
 |-------|--------|--------|
 | Etapa 1 — Bugs críticos (🔴) | 8 | ✅ Completada |
 | Etapa 2 — Seguridad y config (🟠) | 6 | ✅ Completada |
-| Etapa 3 — Rendimiento y SEO (🟡) | 12 | ⏳ Pendiente |
-| Etapa 4 — Accesibilidad (🟢) | 9 | ⏳ Pendiente |
+| Etapa 3 — Rendimiento y SEO (🟡) | 12 | ✅ Completada |
+| Etapa 4 — Accesibilidad (a11y) (🟢) | 9 | ⏳ Pendiente |
 | Etapa 5 — Calidad y DX (🔵) | 12 | ⏳ Pendiente |
 | Etapa 6 — Nuevas funcionalidades (⚪) | 4 | ⏳ Pendiente |
-| **Total** | **51** | **14 / 51** |
+| **Total** | **51** | **26 / 51** |
 
 > Actualizá la columna "Estado" a `🔄 En curso` o `✅ Completada` y el contador `0/51` a medida que avances.
 
@@ -67,18 +67,18 @@ Marca con `[x]` las etapas que se van a ejecutar. Las que queden sin marcar qued
 
 > 12 tareas. Mejorar Core Web Vitals y discoverability.
 
-- [ ] Reemplazar la fuente Inter de Google Fonts por una estrategia optimizada — usar `@fontsource-variable/inter` desde npm (self-hosted, sin request externo) o `astro:font` (Astro 5) con `preload` y `font-display: swap` para evitar render-blocking.
-- [ ] Hacer el meta `description` dinámico por página en `src/layouts/Layout.astro` — actualmente es estático. Añadir `description?: string` y `image?: string` a `Props` y poblar desde cada `.astro` page.
-- [ ] Añadir Open Graph y Twitter Card en `Layout.astro` — meta `og:title`, `og:description`, `og:image`, `og:url`, `og:type`, `og:locale=es_AR`, y sus equivalentes Twitter. Importante para compartir en WhatsApp/LinkedIn.
-- [ ] Añadir `link rel="canonical"` dinámico en `Layout.astro` para evitar contenido duplicado SEO.
-- [ ] Quitar `<meta name="keywords">` — Google lo ignora desde 2009; ocupa bytes y da una imagen anticuada.
-- [ ] Añadir `@astrojs/sitemap` e integrarlo en `astro.config.mjs` para generar `sitemap.xml` automáticamente.
-- [ ] Crear `public/robots.txt` — actualmente no existe. Permitir indexación y apuntar al sitemap.
-- [ ] Optimizar imágenes con `astro:assets` — el logo del footer y futuros assets deben importarse con `import logo from '../assets/logo.svg'` para que Astro los procese (WebP/AVIF, lazy, srcset).
-- [ ] Debounce/throttle del listener `scroll` en `src/components/Header.astro:214` — actualmente dispara en cada frame de scroll. Usar `requestAnimationFrame` o un throttle de 100ms.
-- [ ] Refactorizar `src/layouts/Layout.astro` — el `<style is:global>` es muy grande y se inyecta en cada página. Mover variables CSS y resets a `src/styles/global.css` e importar con `import '../styles/global.css';` en el frontmatter.
-- [ ] Externalizar las constantes (colores, secciones, redes) a un `src/config/site.ts` — actualmente los colores están hardcodeados en `Layout.astro` y se duplican en `Footer.astro` (`#000`, `#fff`, `#b978cc`, `#ffbb00`). Centralizar.
-- [ ] Actualizar `astro.config.mjs` a `output: 'static'` + `prerender` por página — el sitio es prácticamente estático; la única ruta "server" potencial es `/api/contact`. Cambiar a `output: 'static'` con `export const prerender = false` solo en el endpoint reduce coste y latencia en Cloudflare Pages.
+- [x] Reemplazar la fuente Inter de Google Fonts por una estrategia optimizada — usar `@fontsource-variable/inter` desde npm (self-hosted, sin request externo) o `astro:font` (Astro 5) con `preload` y `font-display: swap` para evitar render-blocking.
+- [x] Hacer el meta `description` dinámico por página en `src/layouts/Layout.astro` — actualmente es estático. Añadir `description?: string` y `image?: string` a `Props` y poblar desde cada `.astro` page.
+- [x] Añadir Open Graph y Twitter Card en `Layout.astro` — meta `og:title`, `og:description`, `og:image`, `og:url`, `og:type`, `og:locale=es_AR`, y sus equivalentes Twitter. Importante para compartir en WhatsApp/LinkedIn.
+- [x] Añadir `link rel="canonical"` dinámico en `Layout.astro` para evitar contenido duplicado SEO.
+- [x] Quitar `<meta name="keywords">` — Google lo ignora desde 2009; ocupa bytes y da una imagen anticuada.
+- [x] Añadir `@astrojs/sitemap` e integrarlo en `astro.config.mjs` para generar `sitemap.xml` automáticamente.
+- [x] Crear `public/robots.txt` — actualmente no existe. Permitir indexación y apuntar al sitemap.
+- [x] Optimizar imágenes con `astro:assets` — el logo del footer y futuros assets deben importarse con `import logo from '../assets/logo.svg'` para que Astro los procese (WebP/AVIF, lazy, srcset).
+- [x] Debounce/throttle del listener `scroll` en `src/components/Header.astro:214` — actualmente dispara en cada frame de scroll. Usar `requestAnimationFrame` o un throttle de 100ms.
+- [x] Refactorizar `src/layouts/Layout.astro` — el `<style is:global>` es muy grande y se inyecta en cada página. Mover variables CSS y resets a `src/styles/global.css` e importar con `import '../styles/global.css';` en el frontmatter.
+- [x] Externalizar las constantes (colores, secciones, redes) a un `src/config/site.ts` — actualmente los colores están hardcodeados en `Layout.astro` y se duplican en `Footer.astro` (`#000`, `#fff`, `#b978cc`, `#ffbb00`). Centralizar.
+- [x] Actualizar `astro.config.mjs` a `output: 'static'` + `prerender` por página — el sitio es prácticamente estático; la única ruta "server" potencial es `/api/contact`. Cambiar a `output: 'static'` con `export const prerender = false` solo en el endpoint reduce coste y latencia en Cloudflare Pages.
 
 ---
 
