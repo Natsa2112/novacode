@@ -1,9 +1,20 @@
 ---
+import '@fontsource-variable/inter';
+
 interface Props {
   title: string;
+  description?: string;
+  image?: string;
 }
 
-const { title } = Astro.props;
+const {
+  title,
+  description = 'NovaCode - Desarrollo web profesional, marketing digital y soluciones a medida para tu negocio.',
+  image = '/og-image.svg',
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site).toString();
+const ogImage = new URL(image, Astro.site).toString();
 ---
 
 <!DOCTYPE html>
@@ -11,10 +22,24 @@ const { title } = Astro.props;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="NovaCode - Desarrollo web profesional y soluciones digitales">
-    <meta name="keywords" content="desarrollo web, marketing digital, diseño web">
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonical} />
     <title>{title}</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_AR" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:site_name" content="NovaCode" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
     <slot name="head" />
   </head>
   <body>
@@ -41,7 +66,7 @@ const { title } = Astro.props;
   }
 
   body {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Inter Variable', 'Inter', sans-serif;
     color: var(--text-primary);
     background-color: var(--primary);
     overflow-x: hidden;
