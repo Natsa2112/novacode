@@ -8,7 +8,7 @@ export default defineConfig({
   site: 'https://novacode.com.ar',
   base: '/',
   trailingSlash: 'never',
-  output: 'server',
+  output: 'static',
   adapter: cloudflare({
     imageService: 'compile',
   }),
