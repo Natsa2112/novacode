@@ -15,7 +15,7 @@ Marca con `[x]` las etapas que se van a ejecutar. Las que queden sin marcar qued
 - [x] **Etapa 3** — Rendimiento y SEO (🟡)
 - [x] **Etapa 4** — Accesibilidad (a11y) (🟢)
 - [x] **Etapa 5** — Calidad de código y DX (🔵)
-- [ ] **Etapa 6** — Funcionalidades nuevas / opcional (⚪)
+- [x] **Etapa 6** — Funcionalidades nuevas / opcional (⚪)
 
 ## Progreso general
 
@@ -26,8 +26,8 @@ Marca con `[x]` las etapas que se van a ejecutar. Las que queden sin marcar qued
 | Etapa 3 — Rendimiento y SEO (🟡)      | 12     | ✅ Completada |
 | Etapa 4 — Accesibilidad (a11y) (🟢)   | 9      | ✅ Completada |
 | Etapa 5 — Calidad y DX (🔵)           | 12     | ✅ Completada |
-| Etapa 6 — Nuevas funcionalidades (⚪) | 4      | ⏳ Pendiente  |
-| **Total**                             | **51** | **47 / 51**   |
+| Etapa 6 — Nuevas funcionalidades (⚪) | 4      | ✅ Completada |
+| **Total**                             | **51** | **51 / 51**   |
 
 > Actualizá la columna "Estado" a `🔄 En curso` o `✅ Completada` y el contador `0/51` a medida que avances.
 
@@ -121,10 +121,10 @@ Marca con `[x]` las etapas que se van a ejecutar. Las que queden sin marcar qued
 
 > 4 tareas. Mejoras que no son urgentes pero suman valor. Solo si las etapas anteriores están verdes.
 
-- [ ] Implementar View Transitions (`<ClientRouter />`) de Astro 5 para transiciones suaves entre páginas (Astro 5 lo trae built-in).
-- [ ] Migrar el sitio a Content Collections para preparar una sección de blog o portfolio de proyectos sin reestructurar.
-- [ ] Añadir `astro check` al pre-commit hook (Husky) para no pushear código con errores de tipo.
-- [ ] Crear una página de política de privacidad y de términos referenciada desde el footer (requerido legalmente para formularios que recolectan datos en Argentina según Ley 25.326).
+- [x] Implementar View Transitions (`<ClientRouter />`) de Astro 5 para transiciones suaves entre páginas (Astro 5 lo trae built-in).
+- [x] Migrar el sitio a Content Collections para preparar una sección de blog o portfolio de proyectos sin reestructurar.
+- [x] Añadir `astro check` al pre-commit hook (Husky) para no pushear código con errores de tipo.
+- [x] Crear una página de política de privacidad y de términos referenciada desde el footer (requerido legalmente para formularios que recolectan datos en Argentina según Ley 25.326).
 
 ---
 
