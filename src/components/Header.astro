@@ -1,11 +1,18 @@
 ---
+
 ---
 
 <header class="header">
   <div class="container">
     <nav class="nav">
       <a href="/" class="logo">NovaCode</a>
-      <button class="mobile-menu-btn" aria-label="Menú" aria-expanded="false" aria-controls="navLinks" id="menuBtn">
+      <button
+        class="mobile-menu-btn"
+        aria-label="Menú"
+        aria-expanded="false"
+        aria-controls="navLinks"
+        id="menuBtn"
+      >
         <span></span>
         <span></span>
         <span></span>
@@ -81,7 +88,9 @@
     height: 2px;
     background-color: var(--text-primary);
     margin: 5px 0;
-    transition: transform 0.3s ease-in-out, opacity 0.2s ease-in-out;
+    transition:
+      transform 0.3s ease-in-out,
+      opacity 0.2s ease-in-out;
   }
 
   .mobile-menu-btn.active span:nth-child(1) {
@@ -141,11 +150,21 @@
       opacity: 1;
     }
 
-    .nav-links.active li:nth-child(1) { transition-delay: 0.1s; }
-    .nav-links.active li:nth-child(2) { transition-delay: 0.2s; }
-    .nav-links.active li:nth-child(3) { transition-delay: 0.3s; }
-    .nav-links.active li:nth-child(4) { transition-delay: 0.4s; }
-    .nav-links.active li:nth-child(5) { transition-delay: 0.5s; }
+    .nav-links.active li:nth-child(1) {
+      transition-delay: 0.1s;
+    }
+    .nav-links.active li:nth-child(2) {
+      transition-delay: 0.2s;
+    }
+    .nav-links.active li:nth-child(3) {
+      transition-delay: 0.3s;
+    }
+    .nav-links.active li:nth-child(4) {
+      transition-delay: 0.4s;
+    }
+    .nav-links.active li:nth-child(5) {
+      transition-delay: 0.5s;
+    }
 
     .nav-links a {
       font-size: 1.25rem;
@@ -245,7 +264,7 @@
     else openMenu();
   });
 
-  navLinks?.querySelectorAll('a').forEach(link => {
+  navLinks?.querySelectorAll('a').forEach((link) => {
     link.addEventListener('click', () => closeMenu());
   });
 
@@ -259,9 +278,9 @@
     }
 
     if (e.key === 'Tab' && navLinks) {
-      const focusable = Array.from(
-        navLinks.querySelectorAll<HTMLElement>('a, button'),
-      ).filter((el) => !el.hasAttribute('disabled'));
+      const focusable = Array.from(navLinks.querySelectorAll<HTMLElement>('a, button')).filter(
+        (el) => !el.hasAttribute('disabled'),
+      );
       if (focusable.length === 0) return;
       const first = focusable[0];
       const last = focusable[focusable.length - 1];

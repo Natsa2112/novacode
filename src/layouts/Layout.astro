@@ -9,17 +9,13 @@ interface Props {
   image?: string;
 }
 
-const {
-  title,
-  description = site.description,
-  image = site.ogImage,
-} = Astro.props;
+const { title, description = site.description, image = site.ogImage } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site).toString();
 const ogImage = new URL(image, Astro.site).toString();
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />

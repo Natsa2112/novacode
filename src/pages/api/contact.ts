@@ -1,4 +1,4 @@
-import { env } from "cloudflare:workers";
+import { env } from 'cloudflare:workers';
 
 export const prerender = false;
 
@@ -17,24 +17,23 @@ interface ResendResponse {
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const PHONE_RE = /^[\d\s+\-()]{6,}$/;
-const SERVICIOS = new Set(["web", "marketing", "ecommerce", "otro"]);
+const SERVICIOS = new Set(['web', 'marketing', 'ecommerce', 'otro']);
 
 const json = (body: unknown, status = 200) =>
   new Response(JSON.stringify(body), {
     status,
-    headers: { "content-type": "application/json; charset=utf-8" },
+    headers: { 'content-type': 'application/json; charset=utf-8' },
   });
 
-const wantsHtml = (request: Request) =>
-  (request.headers.get("accept") ?? "").includes("text/html");
+const wantsHtml = (request: Request) => (request.headers.get('accept') ?? '').includes('text/html');
 
 const escapeHtml = (s: string) =>
   s
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#39;");
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
 
 const buildEmailHtml = (data: {
   nombre: string;
@@ -69,7 +68,7 @@ async function sendViaResend(
     mensaje: string;
     receivedAt: string;
   },
-  env: Env,
+  env: Cloudflare.Env,
   ctx: ExecutionContext | undefined,
 ) {
   const apiKey = env.RESEND_API_KEY;
@@ -77,7 +76,7 @@ async function sendViaResend(
   const from = env.PUBLIC_FROM_EMAIL;
 
   if (!apiKey || !to || !from) {
-    return { sent: false as const, reason: "no-credentials" as const };
+    return { sent: false as const, reason: 'no-credentials' as const };
   }
 
   const body = {
@@ -89,35 +88,31 @@ async function sendViaResend(
   };
 
   try {
-    const res = await fetch("https://api.resend.com/emails", {
-      method: "POST",
+    const res = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
       headers: {
         Authorization: `Bearer ${apiKey}`,
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(body),
     });
 
     if (!res.ok) {
       const text = await res.text();
-      ctx?.waitUntil(
-        Promise.resolve(console.error("[contact] Resend error", res.status, text)),
-      );
-      return { sent: false as const, reason: "resend-error" as const, status: res.status };
+      ctx?.waitUntil(Promise.resolve(console.error('[contact] Resend error', res.status, text)));
+      return { sent: false as const, reason: 'resend-error' as const, status: res.status };
     }
 
     const json = (await res.json()) as ResendResponse;
     if (json.error) {
-      ctx?.waitUntil(
-        Promise.resolve(console.error("[contact] Resend API error", json.error)),
-      );
-      return { sent: false as const, reason: "resend-api-error" as const };
+      ctx?.waitUntil(Promise.resolve(console.error('[contact] Resend API error', json.error)));
+      return { sent: false as const, reason: 'resend-api-error' as const };
     }
 
     return { sent: true as const, id: json.id };
   } catch (err) {
-    ctx?.waitUntil(Promise.resolve(console.error("[contact] Resend fetch error", err)));
-    return { sent: false as const, reason: "network-error" as const };
+    ctx?.waitUntil(Promise.resolve(console.error('[contact] Resend fetch error', err)));
+    return { sent: false as const, reason: 'network-error' as const };
   }
 }
 
@@ -131,31 +126,33 @@ export const POST = async ({
   locals: { cfContext?: ExecutionContext };
 }) => {
   let data: ContactPayload;
-  const contentType = request.headers.get("content-type") ?? "";
+  const contentType = request.headers.get('content-type') ?? '';
 
   try {
-    if (contentType.includes("application/json")) {
+    if (contentType.includes('application/json')) {
       data = (await request.json()) as ContactPayload;
     } else {
       const form = await request.formData();
       data = Object.fromEntries(form.entries()) as ContactPayload;
     }
   } catch {
-    return json({ ok: false, error: "Payload inválido." }, 400);
+    return json({ ok: false, error: 'Payload inválido.' }, 400);
   }
 
-  const nombre = (data.nombre ?? "").trim();
-  const email = (data.email ?? "").trim();
-  const telefono = (data.telefono ?? "").trim();
-  const servicio = (data.servicio ?? "").trim();
-  const mensaje = (data.mensaje ?? "").trim();
+  const nombre = (data.nombre ?? '').trim();
+  const email = (data.email ?? '').trim();
+  const telefono = (data.telefono ?? '').trim();
+  const servicio = (data.servicio ?? '').trim();
+  const mensaje = (data.mensaje ?? '').trim();
 
   const errors: Record<string, string> = {};
-  if (nombre.length < 2 || nombre.length > 100) errors.nombre = "Ingresá tu nombre (2-100 caracteres).";
-  if (!EMAIL_RE.test(email) || email.length > 200) errors.email = "Email inválido.";
-  if (!PHONE_RE.test(telefono) || telefono.length > 30) errors.telefono = "Teléfono inválido.";
-  if (!SERVICIOS.has(servicio)) errors.servicio = "Elegí un servicio válido.";
-  if (mensaje.length < 3 || mensaje.length > 2000) errors.mensaje = "El mensaje debe tener entre 3 y 2000 caracteres.";
+  if (nombre.length < 2 || nombre.length > 100)
+    errors.nombre = 'Ingresá tu nombre (2-100 caracteres).';
+  if (!EMAIL_RE.test(email) || email.length > 200) errors.email = 'Email inválido.';
+  if (!PHONE_RE.test(telefono) || telefono.length > 30) errors.telefono = 'Teléfono inválido.';
+  if (!SERVICIOS.has(servicio)) errors.servicio = 'Elegí un servicio válido.';
+  if (mensaje.length < 3 || mensaje.length > 2000)
+    errors.mensaje = 'El mensaje debe tener entre 3 y 2000 caracteres.';
 
   if (Object.keys(errors).length > 0) {
     return json({ ok: false, errors }, 422);
@@ -168,15 +165,15 @@ export const POST = async ({
 
   const result = await sendViaResend(logData, env, ctx);
   if (!result.sent) {
-    console.log("[contact] (no enviado, fallback a log)", result.reason, logData);
+    console.log('[contact] (no enviado, fallback a log)', result.reason, logData);
   } else {
-    console.log("[contact] Email enviado", { id: result.id, ...logData });
+    console.log('[contact] Email enviado', { id: result.id, ...logData });
   }
 
   if (wantsHtml(request)) {
-    return redirect("/gracias", 303);
+    return redirect('/gracias', 303);
   }
   return json({ ok: true });
 };
 
-export const GET = () => json({ ok: false, error: "Método no permitido." }, 405);
+export const GET = () => json({ ok: false, error: 'Método no permitido.' }, 405);

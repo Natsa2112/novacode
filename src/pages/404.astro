@@ -2,7 +2,10 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="404 - Página no encontrada | NovaCode" description="La página que buscás no existe o fue movida a otra ubicación.">
+<Layout
+  title="404 - Página no encontrada | NovaCode"
+  description="La página que buscás no existe o fue movida a otra ubicación."
+>
   <div class="error-page">
     <div class="container">
       <div class="error-content">
@@ -37,8 +40,10 @@ import Layout from '../layouts/Layout.astro';
     font-size: 8rem;
     font-weight: bold;
     position: relative;
-    text-shadow: 0.05em 0 0 var(--accent), -0.025em -0.05em 0 var(--secondary),
-                 0.025em 0.05em 0 var(--highlight);
+    text-shadow:
+      0.05em 0 0 var(--accent),
+      -0.025em -0.05em 0 var(--secondary),
+      0.025em 0.05em 0 var(--highlight);
     animation: glitch 1s infinite;
     margin-bottom: 1rem;
     letter-spacing: 0.2em;
@@ -46,32 +51,46 @@ import Layout from '../layouts/Layout.astro';
 
   @keyframes glitch {
     0% {
-      text-shadow: 0.05em 0 0 var(--accent), -0.025em -0.05em 0 var(--secondary),
-                   0.025em 0.05em 0 var(--highlight);
+      text-shadow:
+        0.05em 0 0 var(--accent),
+        -0.025em -0.05em 0 var(--secondary),
+        0.025em 0.05em 0 var(--highlight);
     }
     14% {
-      text-shadow: 0.05em 0 0 var(--accent), -0.025em -0.05em 0 var(--secondary),
-                   0.025em 0.05em 0 var(--highlight);
+      text-shadow:
+        0.05em 0 0 var(--accent),
+        -0.025em -0.05em 0 var(--secondary),
+        0.025em 0.05em 0 var(--highlight);
     }
     15% {
-      text-shadow: -0.05em -0.025em 0 var(--accent), 0.025em 0.025em 0 var(--secondary),
-                   -0.05em -0.05em 0 var(--highlight);
+      text-shadow:
+        -0.05em -0.025em 0 var(--accent),
+        0.025em 0.025em 0 var(--secondary),
+        -0.05em -0.05em 0 var(--highlight);
     }
     49% {
-      text-shadow: -0.05em -0.025em 0 var(--accent), 0.025em 0.025em 0 var(--secondary),
-                   -0.05em -0.05em 0 var(--highlight);
+      text-shadow:
+        -0.05em -0.025em 0 var(--accent),
+        0.025em 0.025em 0 var(--secondary),
+        -0.05em -0.05em 0 var(--highlight);
     }
     50% {
-      text-shadow: 0.025em 0.05em 0 var(--accent), 0.05em 0 0 var(--secondary),
-                   0 -0.05em 0 var(--highlight);
+      text-shadow:
+        0.025em 0.05em 0 var(--accent),
+        0.05em 0 0 var(--secondary),
+        0 -0.05em 0 var(--highlight);
     }
     99% {
-      text-shadow: 0.025em 0.05em 0 var(--accent), 0.05em 0 0 var(--secondary),
-                   0 -0.05em 0 var(--highlight);
+      text-shadow:
+        0.025em 0.05em 0 var(--accent),
+        0.05em 0 0 var(--secondary),
+        0 -0.05em 0 var(--highlight);
     }
     100% {
-      text-shadow: -0.025em 0 0 var(--accent), -0.025em -0.025em 0 var(--secondary),
-                   -0.025em -0.05em 0 var(--highlight);
+      text-shadow:
+        -0.025em 0 0 var(--accent),
+        -0.025em -0.025em 0 var(--secondary),
+        -0.025em -0.05em 0 var(--highlight);
     }
   }
 
@@ -143,8 +162,10 @@ import Layout from '../layouts/Layout.astro';
   @media (prefers-reduced-motion: reduce) {
     .glitch {
       animation: none;
-      text-shadow: 0.05em 0 0 var(--accent), -0.025em -0.05em 0 var(--secondary-strong),
-                   0.025em 0.05em 0 var(--highlight);
+      text-shadow:
+        0.05em 0 0 var(--accent),
+        -0.025em -0.05em 0 var(--secondary-strong),
+        0.025em 0.05em 0 var(--highlight);
     }
   }
 </style>

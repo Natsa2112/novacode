@@ -19,15 +19,15 @@ Marca con `[x]` las etapas que se van a ejecutar. Las que queden sin marcar qued
 
 ## Progreso general
 
-| Etapa | Tareas | Estado |
-|-------|--------|--------|
-| Etapa 1 — Bugs críticos (🔴) | 8 | ✅ Completada |
-| Etapa 2 — Seguridad y config (🟠) | 6 | ✅ Completada |
-| Etapa 3 — Rendimiento y SEO (🟡) | 12 | ✅ Completada |
-| Etapa 4 — Accesibilidad (a11y) (🟢) | 9 | ✅ Completada |
-| Etapa 5 — Calidad y DX (🔵) | 12 | ⏳ Pendiente |
-| Etapa 6 — Nuevas funcionalidades (⚪) | 4 | ⏳ Pendiente |
-| **Total** | **51** | **35 / 51** |
+| Etapa                                 | Tareas | Estado        |
+| ------------------------------------- | ------ | ------------- |
+| Etapa 1 — Bugs críticos (🔴)          | 8      | ✅ Completada |
+| Etapa 2 — Seguridad y config (🟠)     | 6      | ✅ Completada |
+| Etapa 3 — Rendimiento y SEO (🟡)      | 12     | ✅ Completada |
+| Etapa 4 — Accesibilidad (a11y) (🟢)   | 9      | ✅ Completada |
+| Etapa 5 — Calidad y DX (🔵)           | 12     | ⏳ Pendiente  |
+| Etapa 6 — Nuevas funcionalidades (⚪) | 4      | ⏳ Pendiente  |
+| **Total**                             | **51** | **35 / 51**   |
 
 > Actualizá la columna "Estado" a `🔄 En curso` o `✅ Completada` y el contador `0/51` a medida que avances.
 
@@ -135,6 +135,7 @@ Marca con `[x]` las etapas que se van a ejecutar. Las que queden sin marcar qued
 - ✅ **Completada** — todas las tareas en `[x]`
 
 > **Cómo usar este archivo:**
+>
 > 1. Al inicio, marcá en la sección "Etapas a realizar" cuáles vas a encarar.
 > 2. A medida que completés tareas, cambialas de `- [ ]` a `- [x]`.
 > 3. Cuando una etapa esté completa, actualizá su estado en la tabla de "Progreso general" y el contador `0/51`.

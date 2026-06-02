@@ -31,12 +31,7 @@ import { site, socials, sections } from '../config/site';
           {
             socials.map((s) => (
               <li>
-                <a
-                  href={s.href}
-                  aria-label={s.name}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <a href={s.href} aria-label={s.name} target="_blank" rel="noopener noreferrer">
                   <Icon name={s.icon} size={22} />
                 </a>
               </li>

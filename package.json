@@ -14,7 +14,11 @@
     "preview": "wrangler types && astro preview",
     "astro": "astro",
     "cf:types": "wrangler types",
-    "cf:deploy": "wrangler deploy"
+    "cf:deploy": "wrangler deploy",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write \"**/*.{astro,ts,tsx,js,jsx,json,md,yml,yaml}\"",
+    "format:check": "prettier --check \"**/*.{astro,ts,tsx,js,jsx,json,md,yml,yaml}\""
   },
   "dependencies": {
     "@astrojs/cloudflare": "^13.6.0",

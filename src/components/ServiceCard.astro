@@ -16,10 +16,6 @@ const { service } = Astro.props;
   <h3>{service.title}</h3>
   <p>{service.description}</p>
   <ul class="service-features">
-    {
-      service.features.map((f) => (
-        <li>{f}</li>
-      ))
-    }
+    {service.features.map((f) => <li>{f}</li>)}
   </ul>
 </div>

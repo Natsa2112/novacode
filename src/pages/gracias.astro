@@ -2,9 +2,12 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Gracias - NovaCode" description="Tu consulta fue enviada. Te vamos a responder a la brevedad.">
+<Layout
+  title="Gracias - NovaCode"
+  description="Tu consulta fue enviada. Te vamos a responder a la brevedad."
+>
   <Fragment slot="head">
-    <meta http-equiv="refresh" content="10;url=/">
+    <meta http-equiv="refresh" content="10;url=/" />
   </Fragment>
 
   <div class="thank-you-popup" role="status" aria-live="polite">
@@ -86,7 +89,9 @@ import Layout from '../layouts/Layout.astro';
     text-decoration: none;
     border-radius: 50px;
     font-weight: 600;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
   }
 
   .btn-back:hover {

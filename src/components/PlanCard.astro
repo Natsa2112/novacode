@@ -15,11 +15,7 @@ const { plan } = Astro.props;
     <p class="plan-description">{plan.description}</p>
   </div>
   <ul class="features">
-    {
-      plan.features.map((f) => (
-        <li>{f}</li>
-      ))
-    }
+    {plan.features.map((f) => <li>{f}</li>)}
   </ul>
   <a href={plan.cta.href} class:list={['btn', `btn-${plan.cta.variant}`]}>{plan.cta.label}</a>
 </div>
