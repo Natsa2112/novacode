@@ -8,5 +8,7 @@ export default defineConfig({
   base: '/',
   trailingSlash: 'never',
   output: 'server',
-  adapter: cloudflare()
+  adapter: cloudflare({
+    imageService: 'compile',
+  }),
 });

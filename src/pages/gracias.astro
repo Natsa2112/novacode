@@ -3,11 +3,16 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="Gracias - NovaCode">
-  <div class="thank-you-popup">
+  <Fragment slot="head">
+    <meta http-equiv="refresh" content="10;url=/">
+  </Fragment>
+
+  <div class="thank-you-popup" role="status" aria-live="polite">
     <div class="popup-content">
       <h2>¡Gracias!</h2>
-      <p>Su consulta fue enviada.</p>
+      <p>Su consulta fue enviada. Te vamos a responder a la brevedad.</p>
       <a href="/" class="btn-back">Volver al inicio</a>
+      <p class="redirect-note">Vas a ser redirigido automáticamente en unos segundos.</p>
     </div>
   </div>
 </Layout>
@@ -65,6 +70,14 @@ import Layout from '../layouts/Layout.astro';
     font-size: 1.2rem;
   }
 
+  .redirect-note {
+    margin-top: 1.5rem;
+    margin-bottom: 0;
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    opacity: 0.7;
+  }
+
   .btn-back {
     display: inline-block;
     padding: 1rem 2rem;
@@ -81,10 +94,3 @@ import Layout from '../layouts/Layout.astro';
     box-shadow: 0 5px 15px rgba(185, 120, 204, 0.4);
   }
 </style>
-
-<script>
-  // Redirigir al inicio después de 5 segundos
-  setTimeout(() => {
-    window.location.href = '/';
-  }, 5000);
-</script>

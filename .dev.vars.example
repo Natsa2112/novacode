@@ -1,0 +1,9 @@
+# Cloudflare Workers — variables de entorno locales
+# Copiá este archivo a `.dev.vars` y completá los valores.
+# `.dev.vars` está en .gitignore y solo se usa en `wrangler dev` / `astro dev`.
+
+# Clave del servicio de email (Resend). Sin esto, los mensajes del formulario
+# solo se loguean a consola y NO se envían por mail.
+# Conseguir la key en: https://resend.com/api-keys
+# Setear en producción con:  npx wrangler secret put RESEND_API_KEY
+RESEND_API_KEY=

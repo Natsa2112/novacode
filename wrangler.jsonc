@@ -1,0 +1,19 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "novacode",
+  "main": "@astrojs/cloudflare/entrypoints/server",
+  "compatibility_date": "2025-05-21",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS"
+  },
+  "vars": {
+    "PUBLIC_SITE_URL": "https://novacode.com.ar",
+    "PUBLIC_FROM_EMAIL": "noreply@novacode.com.ar",
+    "CONTACT_TO_EMAIL": "info@novacode.com.ar"
+  },
+  "observability": {
+    "enabled": true
+  }
+}
