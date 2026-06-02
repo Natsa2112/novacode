@@ -1,5 +1,7 @@
 ---
 import '@fontsource-variable/inter';
+import '../styles/global.css';
+import { site } from '../config/site';
 
 interface Props {
   title: string;
@@ -9,8 +11,8 @@ interface Props {
 
 const {
   title,
-  description = 'NovaCode - Desarrollo web profesional, marketing digital y soluciones a medida para tu negocio.',
-  image = '/og-image.svg',
+  description = site.description,
+  image = site.ogImage,
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site).toString();
@@ -28,12 +30,12 @@ const ogImage = new URL(image, Astro.site).toString();
     <title>{title}</title>
 
     <meta property="og:type" content="website" />
-    <meta property="og:locale" content="es_AR" />
+    <meta property="og:locale" content={site.locale} />
     <meta property="og:url" content={canonical} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImage} />
-    <meta property="og:site_name" content="NovaCode" />
+    <meta property="og:site_name" content={site.name} />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
@@ -48,148 +50,3 @@ const ogImage = new URL(image, Astro.site).toString();
     </div>
   </body>
 </html>
-
-<style is:global>
-  :root {
-    --primary: #000000;
-    --secondary: #b978cc;
-    --accent: #87da4a;
-    --highlight: #ffbb00;
-    --text-primary: #ffffff;
-    --text-secondary: rgba(255, 255, 255, 0.7);
-  }
-
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-
-  body {
-    font-family: 'Inter Variable', 'Inter', sans-serif;
-    color: var(--text-primary);
-    background-color: var(--primary);
-    overflow-x: hidden;
-  }
-
-  .gradient-background {
-    position: relative;
-    min-height: 100vh;
-    background: var(--primary);
-    overflow: hidden;
-  }
-
-  .gradient-background::before,
-  .gradient-background::after {
-    content: '';
-    position: absolute;
-    width: 600px;
-    height: 600px;
-    border-radius: 50%;
-    filter: blur(120px);
-    opacity: 0.1;
-    z-index: 0;
-  }
-
-  .gradient-background::before {
-    background: var(--secondary);
-    top: -100px;
-    right: -100px;
-  }
-
-  .gradient-background::after {
-    background: var(--accent);
-    bottom: -100px;
-    left: -100px;
-  }
-
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1rem;
-    position: relative;
-    z-index: 1;
-  }
-
-  .section {
-    padding: 6rem 0;
-    position: relative;
-  }
-
-  .section-title {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-    background: linear-gradient(135deg, var(--text-primary), var(--secondary));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
-
-  .section-subtitle {
-    color: var(--text-secondary);
-    font-size: 1.1rem;
-    margin-bottom: 3rem;
-  }
-
-  .card {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 16px;
-    padding: 2rem;
-    backdrop-filter: blur(10px);
-    transition: transform 0.3s ease, border-color 0.3s ease;
-  }
-
-  .card:hover {
-    transform: translateY(-5px);
-    border-color: var(--secondary);
-  }
-
-  .btn {
-    display: inline-block;
-    padding: 0.8rem 1.5rem;
-    border-radius: 8px;
-    font-weight: 600;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    border: none;
-    cursor: pointer;
-  }
-
-  .btn-primary {
-    background: var(--secondary);
-    color: var(--text-primary);
-  }
-
-  .btn-secondary {
-    background: transparent;
-    border: 2px solid var(--secondary);
-    color: var(--text-primary);
-  }
-
-  .btn-accent {
-    background: var(--accent);
-    color: var(--primary);
-  }
-
-  .btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  }
-
-  @media (max-width: 768px) {
-    .section {
-      padding: 4rem 0;
-    }
-
-    .section-title {
-      font-size: 2rem;
-    }
-
-    .gradient-background::before,
-    .gradient-background::after {
-      width: 300px;
-      height: 300px;
-    }
-  }
-</style>
