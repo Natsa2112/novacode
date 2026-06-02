@@ -105,7 +105,7 @@ import Layout from '../layouts/Layout.astro';
   }
 
   .btn-primary {
-    background: var(--secondary);
+    background: var(--secondary-strong);
     color: white;
   }
 
@@ -121,7 +121,7 @@ import Layout from '../layouts/Layout.astro';
   }
 
   .btn-secondary:hover {
-    background: var(--secondary);
+    background: var(--secondary-strong);
     color: white;
     transform: translateY(-2px);
   }
@@ -137,6 +137,14 @@ import Layout from '../layouts/Layout.astro';
 
     .actions {
       flex-direction: column;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .glitch {
+      animation: none;
+      text-shadow: 0.05em 0 0 var(--accent), -0.025em -0.05em 0 var(--secondary-strong),
+                   0.025em 0.05em 0 var(--highlight);
     }
   }
 </style>

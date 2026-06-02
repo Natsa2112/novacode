@@ -5,7 +5,7 @@
   <div class="container">
     <nav class="nav">
       <a href="/" class="logo">NovaCode</a>
-      <button class="mobile-menu-btn" aria-label="Menú" id="menuBtn">
+      <button class="mobile-menu-btn" aria-label="Menú" aria-expanded="false" aria-controls="navLinks" id="menuBtn">
         <span></span>
         <span></span>
         <span></span>
@@ -220,15 +220,60 @@
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('load', updateActiveLink);
 
+  const isOpen = () => navLinks?.classList.contains('active') ?? false;
+
+  const setOpen = (open: boolean) => {
+    if (!menuBtn || !navLinks) return;
+    menuBtn.classList.toggle('active', open);
+    navLinks.classList.toggle('active', open);
+    menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  };
+
+  const openMenu = () => {
+    setOpen(true);
+    const firstLink = navLinks?.querySelector<HTMLAnchorElement>('a');
+    firstLink?.focus();
+  };
+
+  const closeMenu = () => {
+    setOpen(false);
+    menuBtn?.focus();
+  };
+
   menuBtn?.addEventListener('click', () => {
-    menuBtn.classList.toggle('active');
-    navLinks?.classList.toggle('active');
+    if (isOpen()) closeMenu();
+    else openMenu();
   });
 
   navLinks?.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      menuBtn?.classList.remove('active');
-      navLinks.classList.remove('active');
-    });
+    link.addEventListener('click', () => closeMenu());
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (!isOpen()) return;
+
+    if (e.key === 'Escape') {
+      e.preventDefault();
+      closeMenu();
+      return;
+    }
+
+    if (e.key === 'Tab' && navLinks) {
+      const focusable = Array.from(
+        navLinks.querySelectorAll<HTMLElement>('a, button'),
+      ).filter((el) => !el.hasAttribute('disabled'));
+      if (focusable.length === 0) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      const active = document.activeElement as HTMLElement | null;
+
+      if (e.shiftKey && (active === first || !navLinks.contains(active))) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && (active === last || !navLinks.contains(active))) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
   });
 </script>
