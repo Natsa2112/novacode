@@ -1,20 +1,39 @@
 ---
-import { Image } from 'astro:assets';
 import Icon from './Icon.astro';
-import logo from '../assets/logo.svg';
 import { site, socials, sections, legalLinks } from '../config/site';
 ---
 
 <footer class="footer">
   <div class="container">
-    <div class="footer-content">
-      <div class="footer-logo">
-        <a href="/" aria-label={`${site.name} - Inicio`}>
-          <Image src={logo} alt={site.name} width={200} height={40} loading="lazy" />
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="/" class="footer-logo" aria-label={`${site.name} - Inicio`}>
+          <span class="footer-logo__mark" aria-hidden="true"></span>
+          <span class="footer-logo__text">{site.name}</span>
         </a>
+        <p class="footer-brand__desc">
+          Agencia digital especializada en desarrollo web, marketing digital y diseño. Soluciones a
+          medida para hacer crecer tu negocio.
+        </p>
+        <div class="footer-social" aria-label="Redes sociales">
+          {
+            socials.map((s) => (
+              <a
+                href={s.href}
+                class="footer-social__link"
+                aria-label={s.name}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Icon name={s.icon} size={18} />
+              </a>
+            ))
+          }
+        </div>
       </div>
-      <div class="footer-links">
-        <h3>Enlaces rápidos</h3>
+
+      <nav class="footer-nav" aria-label="Enlaces del sitio">
+        <h3 class="footer-nav__title">Navegación</h3>
         <ul>
           {
             sections.map((s) => (
@@ -24,9 +43,10 @@ import { site, socials, sections, legalLinks } from '../config/site';
             ))
           }
         </ul>
-      </div>
-      <div class="footer-legal">
-        <h3>Legal</h3>
+      </nav>
+
+      <nav class="footer-nav" aria-label="Enlaces legales">
+        <h3 class="footer-nav__title">Legal</h3>
         <ul>
           {
             legalLinks.map((l) => (
@@ -36,172 +56,135 @@ import { site, socials, sections, legalLinks } from '../config/site';
             ))
           }
         </ul>
-      </div>
-      <div class="footer-social">
-        <h3>Redes sociales</h3>
-        <ul>
-          {
-            socials.map((s) => (
-              <li>
-                <a href={s.href} aria-label={s.name} target="_blank" rel="noopener noreferrer">
-                  <Icon name={s.icon} size={22} />
-                </a>
-              </li>
-            ))
-          }
-        </ul>
-      </div>
-      <div class="footer-copyright">
-        <p>&copy; {new Date().getFullYear()} {site.name}. Todos los derechos reservados.</p>
-      </div>
+      </nav>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; {new Date().getFullYear()} {site.name}. Todos los derechos reservados.</p>
     </div>
   </div>
 </footer>
 
 <style>
   .footer {
-    background-color: #000;
-    color: #fff;
+    margin-top: var(--space-16);
+    padding: var(--space-16) 0 var(--space-8);
+    background: linear-gradient(180deg, transparent 0%, var(--color-bg-surface) 30%);
+    border-top: 1px solid var(--color-border-subtle);
   }
 
-  .footer-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    background-color: #000000;
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 0 10px #87da4a33;
-    gap: 2rem;
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: var(--space-10);
+    margin-bottom: var(--space-10);
+  }
+
+  .footer-brand__desc {
+    margin-top: var(--space-4);
+    color: var(--color-text-secondary);
+    line-height: var(--leading-relaxed);
+    max-width: 360px;
+    font-size: var(--text-sm);
   }
 
   .footer-logo {
-    margin-bottom: 2rem;
-    flex: 1 1 200px;
-  }
-
-  .footer-logo a {
-    display: inline-block;
-    line-height: 0;
-  }
-
-  .footer-links {
-    margin-bottom: 2rem;
-    flex: 1 1 200px;
-  }
-
-  .footer-links h3 {
-    font-size: 18px;
-    margin-bottom: 1rem;
-    color: #b978cc;
-  }
-
-  .footer-links ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-
-  .footer-links li {
-    margin-bottom: 1rem;
-  }
-
-  .footer-links a {
-    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-xl);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--color-text-primary);
     text-decoration: none;
-    transition: color 0.3s ease;
   }
 
-  .footer-links a:hover {
-    color: #ffbb00;
-  }
-
-  .footer-legal {
-    margin-bottom: 2rem;
-    flex: 1 1 200px;
-  }
-
-  .footer-legal h3 {
-    font-size: 18px;
-    margin-bottom: 1rem;
-    color: #b978cc;
-  }
-
-  .footer-legal ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-
-  .footer-legal li {
-    margin-bottom: 1rem;
-  }
-
-  .footer-legal a {
-    color: #fff;
-    text-decoration: none;
-    transition: color 0.3s ease;
-    font-size: 0.95rem;
-  }
-
-  .footer-legal a:hover {
-    color: #ffbb00;
+  .footer-logo__mark {
+    width: 10px;
+    height: 10px;
+    border-radius: 3px;
+    background: var(--gradient-accent);
+    box-shadow: var(--shadow-glow-accent);
   }
 
   .footer-social {
-    margin-bottom: 2rem;
-    flex: 1 1 200px;
-  }
-
-  .footer-social h3 {
-    font-size: 18px;
-    margin-bottom: 1rem;
-    color: #b978cc;
-  }
-
-  .footer-social ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
     display: flex;
-    gap: 1rem;
+    gap: var(--space-2);
+    margin-top: var(--space-5);
   }
 
-  .footer-social li {
-    margin-bottom: 0;
-  }
-
-  .footer-social a {
-    color: #fff;
-    text-decoration: none;
+  .footer-social__link {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
-    border-radius: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    width: 36px;
+    height: 36px;
+    color: var(--color-text-secondary);
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-md);
     transition:
-      color 0.3s ease,
-      border-color 0.3s ease,
-      transform 0.3s ease;
+      color var(--duration-base) var(--ease-out),
+      background var(--duration-base) var(--ease-out),
+      border-color var(--duration-base) var(--ease-out),
+      transform var(--duration-base) var(--ease-out);
   }
 
-  .footer-social a:hover {
-    color: #ffbb00;
-    border-color: #ffbb00;
+  .footer-social__link:hover {
+    color: var(--color-text-primary);
+    background: var(--color-accent);
+    border-color: var(--color-accent);
     transform: translateY(-2px);
   }
 
-  .footer-copyright {
-    width: 100%;
-    margin-top: 1rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    color: #666;
-    font-size: 0.875rem;
+  .footer-nav__title {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+    margin-bottom: var(--space-4);
+  }
+
+  .footer-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .footer-nav a {
+    color: var(--color-text-secondary);
+    font-size: var(--text-sm);
+    text-decoration: none;
+    transition: color var(--duration-base) var(--ease-out);
+  }
+
+  .footer-nav a:hover {
+    color: var(--color-text-primary);
+  }
+
+  .footer-bottom {
+    padding-top: var(--space-6);
+    border-top: 1px solid var(--color-border-subtle);
     text-align: center;
+  }
+
+  .footer-bottom p {
+    color: var(--color-text-tertiary);
+    font-size: var(--text-sm);
+  }
+
+  @media (max-width: 768px) {
+    .footer-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-8);
+    }
+
+    .footer-brand__desc {
+      max-width: 100%;
+    }
   }
 </style>

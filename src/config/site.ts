@@ -13,13 +13,23 @@ export const site = {
 } as const;
 
 export const colors = {
-  primary: '#000000',
+  // Surfaces
+  bgBase: '#0a0a0f',
+  bgSurface: '#11121a',
+  bgElevated: '#1a1c28',
+  // Text
+  textPrimary: '#f5f6fa',
+  textSecondary: 'rgba(245, 246, 250, 0.65)',
+  textTertiary: 'rgba(245, 246, 250, 0.45)',
+  // Accents
+  accent: '#6366f1',
+  accentHover: '#818cf8',
+  accent2: '#06b6d4',
+  // Legacy (kept for service icon backgrounds and badge)
   secondary: '#b978cc',
-  secondaryStrong: '#7A4F8B',
-  accent: '#87da4a',
-  highlight: '#ffbb00',
-  textPrimary: '#ffffff',
-  textSecondary: 'rgba(255, 255, 255, 0.7)',
+  secondaryStrong: '#7a4f8b',
+  success: '#87da4a',
+  warning: '#ffbb00',
 } as const;
 
 export const sections = [

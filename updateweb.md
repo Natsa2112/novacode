@@ -167,10 +167,10 @@ El proyecto ya no usa el modelo de Cloudflare Pages. Está listo para deployarse
 
 ### Lo que falta del lado de Cloudflare (no se puede automatizar desde el repo)
 
-- [ ] En el dashboard de Cloudflare: **Pages → Workers**. Crear un Worker nuevo (o usar `wrangler deploy` con `account_id` y `routes` configurados).
-- [ ] Configurar el dominio personalizado (`novacode.com.ar`) — antes iba en Pages, ahora va en el Worker (`wrangler.jsonc` → `routes` + `custom_domain` o configuración en el dashboard).
-- [ ] Definir `vars` y `secrets` en `wrangler.jsonc` o en el dashboard (no commitear secrets al repo).
-- [ ] Configurar CI/CD (Etapa 5) que corra `npm ci` + `npm run build` y haga `wrangler deploy` con un `CLOUDFLARE_API_TOKEN`.
+- [x] En el dashboard de Cloudflare: **Pages → Workers**. Crear un Worker nuevo (o usar `wrangler deploy` con `account_id` y `routes` configurados).
+- [x] Configurar el dominio personalizado (`novacode.com.ar`) — antes iba en Pages, ahora va en el Worker (`wrangler.jsonc` → `routes` + `custom_domain` o configuración en el dashboard).
+- [x] Definir `vars` y `secrets` en `wrangler.jsonc` o en el dashboard (no commitear secrets al repo).
+- [x] Configurar CI/CD (Etapa 5) que corra `npm ci` + `npm run build` y haga `wrangler deploy` con un `CLOUDFLARE_API_TOKEN`.
 
 ### Verificación local del deploy (antes de subir)
 

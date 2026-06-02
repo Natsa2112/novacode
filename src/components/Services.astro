@@ -5,12 +5,14 @@ import { services } from '../config/site';
 
 <section id="servicios" class="section">
   <div class="container">
-    <h2 class="section-title">Soluciones Digitales para Cada Necesidad</h2>
-    <p class="section-subtitle">
-      Nosotros cubrimos todos los frentes de la presencia digital. Desde el desarrollo de páginas
-      web profesionales hasta campañas de marketing digital de alto impacto, nuestros servicios
-      están diseñados para maximizar tu crecimiento.
-    </p>
+    <header class="section-header">
+      <h2 class="section-title">Soluciones Digitales para Cada Necesidad</h2>
+      <p class="section-subtitle">
+        Nosotros cubrimos todos los frentes de la presencia digital. Desde el desarrollo de páginas
+        web profesionales hasta campañas de marketing digital de alto impacto, nuestros servicios
+        están diseñados para maximizar tu crecimiento.
+      </p>
+    </header>
 
     <div class="services-grid">
       {services.map((service) => <ServiceCard service={service} />)}
@@ -22,61 +24,87 @@ import { services } from '../config/site';
   .services-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    margin-top: 3rem;
+    gap: var(--space-6);
   }
 
   .service-icon {
-    width: 48px;
-    height: 48px;
-    border-radius: 12px;
-    display: flex;
+    width: 56px;
+    height: 56px;
+    border-radius: var(--radius-lg);
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 1rem;
-    color: var(--text-primary);
+    margin-bottom: var(--space-5);
+    color: var(--color-text-on-accent);
+    position: relative;
+    transition: transform var(--duration-base) var(--ease-out);
+  }
+
+  .service-icon::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: inherit;
+    filter: blur(16px);
+    opacity: 0.4;
+    z-index: -1;
+  }
+
+  .service-card:hover .service-icon {
+    transform: scale(1.08) rotate(-4deg);
   }
 
   .service-icon.chart {
-    background: var(--secondary);
+    background: var(--color-accent);
   }
 
   .service-icon.monitor {
-    background: var(--accent);
+    background: var(--color-accent-2);
   }
 
   .service-icon.sparkle {
-    background: var(--highlight);
-    color: var(--primary);
+    background: var(--color-secondary);
   }
 
   .service-card :global(h3) {
-    font-size: 1.5rem;
-    color: var(--text-primary);
+    font-size: var(--text-xl);
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-3);
+    letter-spacing: -0.01em;
   }
 
   .service-card :global(p) {
-    color: var(--text-secondary);
-    margin-bottom: 1rem;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-4);
+    line-height: var(--leading-relaxed);
   }
 
   .service-features {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: var(--space-2);
   }
 
   .service-features :global(li) {
-    color: var(--text-secondary);
+    color: var(--color-text-secondary);
     display: flex;
-    align-items: center;
-    gap: 0.5rem;
+    align-items: flex-start;
+    gap: var(--space-2);
+    font-size: var(--text-sm);
+    line-height: var(--leading-snug);
   }
 
   .service-features :global(li::before) {
-    content: '•';
-    color: var(--secondary);
+    content: '';
+    flex-shrink: 0;
+    width: 6px;
+    height: 6px;
+    margin-top: 0.5em;
+    border-radius: 50%;
+    background: var(--color-accent);
   }
 
   @media (max-width: 1024px) {

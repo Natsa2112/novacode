@@ -1,15 +1,75 @@
+---
+const codeSnippet = `<span class="tok-c">// Tu próximo proyecto, en producción</span>
+<span class="tok-k">const</span> <span class="tok-v">proyecto</span> = {
+  <span class="tok-v">stack</span>: [<span class="tok-s">Astro</span>, <span class="tok-s">TypeScript</span>, <span class="tok-s">Cloudflare</span>],
+  <span class="tok-v">performance</span>: <span class="tok-n">100</span>,
+  <span class="tok-v">seo</span>: <span class="tok-s">optimizado</span>,
+  <span class="tok-v">soporte</span>: <span class="tok-s">24/7</span>,
+};
+<span class="tok-k">export default</span> <span class="tok-f">launch</span>(<span class="tok-v">proyecto</span>);`;
+---
+
 <section class="hero">
   <div class="container">
-    <div class="hero-content">
-      <h1>Desarrollamos el Futuro Digital de tu Negocio</h1>
-      <p>
-        En NovaCode, transformamos ideas en experiencias digitales que capturan clientes y potencian
-        resultados. Con soluciones a medida en marketing digital y diseño web, hacemos que tu
-        empresa destaque en un mundo cada vez más conectado.
-      </p>
-      <div class="hero-buttons">
-        <a href="#contacto" class="btn btn-primary">Quiero Impulsar Mi Negocio</a>
-        <a href="#servicios" class="btn btn-secondary">Explorar Servicios</a>
+    <div class="hero-grid">
+      <div class="hero-content">
+        <span class="hero-eyebrow">
+          <span class="hero-eyebrow__dot"></span>
+          Agencia digital · Buenos Aires
+        </span>
+        <h1 class="hero-title">Desarrollamos el Futuro Digital de tu Negocio</h1>
+        <p class="hero-lead">
+          En NovaCode, transformamos ideas en experiencias digitales que capturan clientes y
+          potencian resultados. Con soluciones a medida en marketing digital y diseño web, hacemos
+          que tu empresa destaque en un mundo cada vez más conectado.
+        </p>
+        <div class="hero-buttons">
+          <a href="#contacto" class="btn btn--primary btn--lg">
+            Quiero Impulsar Mi Negocio
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+          <a href="#servicios" class="btn btn--secondary btn--lg">Explorar Servicios</a>
+        </div>
+
+        <div class="hero-trust">
+          <div class="hero-trust__avatars" aria-hidden="true">
+            <span class="hero-trust__avatar" style="--avatar-bg: #6366f1">N</span>
+            <span class="hero-trust__avatar" style="--avatar-bg: #06b6d4">C</span>
+            <span class="hero-trust__avatar" style="--avatar-bg: #b978cc">D</span>
+            <span class="hero-trust__avatar" style="--avatar-bg: #87da4a">+</span>
+          </div>
+          <p class="hero-trust__text">
+            Empresas que confiaron en nuestro equipo para crecer online
+          </p>
+        </div>
+      </div>
+
+      <div class="hero-visual" aria-hidden="true">
+        <div class="hero-window">
+          <div class="hero-window__bar">
+            <span class="hero-window__dot" style="--dot: #ff5f57"></span>
+            <span class="hero-window__dot" style="--dot: #ffbd2e"></span>
+            <span class="hero-window__dot" style="--dot: #28c840"></span>
+            <span class="hero-window__file">novacode.config.ts</span>
+          </div>
+          <pre class="hero-window__code"><code set:html={codeSnippet} /></pre>
+        </div>
+
+        <div class="hero-orb hero-orb--1"></div>
+        <div class="hero-orb hero-orb--2"></div>
       </div>
     </div>
   </div>
@@ -17,71 +77,255 @@
 
 <style>
   .hero {
-    padding: 8rem 0 4rem;
+    padding: calc(var(--header-height) + var(--space-16)) 0 var(--space-20);
     position: relative;
-    margin-top: 1.2rem;
   }
 
-  .hero-content {
-    max-width: 600px;
+  .hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: var(--space-16);
+    align-items: center;
   }
 
-  h1 {
-    font-size: 3.5rem;
-    line-height: 1.2;
-    margin-bottom: 1.5rem;
-    background: linear-gradient(135deg, var(--text-primary), var(--secondary));
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-3);
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border-default);
+    border-radius: var(--radius-full);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-6);
+  }
+
+  .hero-eyebrow__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-accent);
+    box-shadow: 0 0 0 4px var(--color-accent-soft);
+    animation: pulse 2s var(--ease-in-out) infinite;
+  }
+
+  @keyframes pulse {
+    0%,
+    100% {
+      box-shadow: 0 0 0 4px var(--color-accent-soft);
+    }
+    50% {
+      box-shadow: 0 0 0 8px transparent;
+    }
+  }
+
+  .hero-title {
+    font-size: clamp(var(--text-4xl), 5.5vw, var(--text-6xl));
+    font-weight: 800;
+    line-height: var(--leading-tight);
+    letter-spacing: -0.03em;
+    margin-bottom: var(--space-6);
+    background: var(--gradient-text);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
   }
 
-  p {
-    font-size: 1.2rem;
-    line-height: 1.6;
-    color: #666;
-    margin-bottom: 2rem;
+  .hero-lead {
+    font-size: var(--text-lg);
+    line-height: var(--leading-relaxed);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-8);
+    max-width: 560px;
   }
 
   .hero-buttons {
     display: flex;
-    gap: 1rem;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+    margin-bottom: var(--space-10);
   }
 
-  .hero-image {
+  .hero-trust {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+  }
+
+  .hero-trust__avatars {
+    display: flex;
+  }
+
+  .hero-trust__avatar {
+    width: 36px;
+    height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--avatar-bg, var(--color-accent));
+    color: var(--color-text-on-accent);
+    font-size: var(--text-sm);
+    font-weight: 700;
+    border-radius: 50%;
+    border: 2px solid var(--color-bg-base);
+    margin-left: -10px;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .hero-trust__avatar:first-child {
+    margin-left: 0;
+  }
+
+  .hero-trust__text {
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    max-width: 280px;
+  }
+
+  /* Visual: code window */
+  .hero-visual {
+    position: relative;
+    min-height: 360px;
+  }
+
+  .hero-window {
+    position: relative;
+    background: var(--color-bg-surface);
+    border: 1px solid var(--color-border-default);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-xl);
+    overflow: hidden;
+    z-index: 2;
+    transform: rotate(-1.5deg);
+    transition: transform var(--duration-slow) var(--ease-out);
+  }
+
+  .hero-window:hover {
+    transform: rotate(0);
+  }
+
+  .hero-window__bar {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-3) var(--space-4);
+    background: var(--color-bg-elevated);
+    border-bottom: 1px solid var(--color-border-subtle);
+  }
+
+  .hero-window__dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--dot);
+  }
+
+  .hero-window__file {
+    margin-left: var(--space-3);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--color-text-tertiary);
+  }
+
+  .hero-window__code {
+    padding: var(--space-6);
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    line-height: 1.7;
+    color: var(--color-text-secondary);
+    overflow-x: auto;
+  }
+
+  .hero-window__code code {
+    font-family: inherit;
+  }
+
+  /* Token colors for code window (purely decorative) */
+  .tok-c {
+    color: var(--color-text-tertiary);
+    font-style: italic;
+  }
+  .tok-k {
+    color: #c084fc;
+  }
+  .tok-v {
+    color: #67e8f9;
+  }
+  .tok-s {
+    color: #86efac;
+  }
+  .tok-s::before {
+    content: "'";
+  }
+  .tok-s::after {
+    content: "'";
+  }
+  .tok-n {
+    color: #fbbf24;
+  }
+  .tok-f {
+    color: #f472b6;
+  }
+
+  /* Decorative orbs behind the code window */
+  .hero-orb {
     position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 45%;
-    max-width: 600px;
+    border-radius: 50%;
+    filter: blur(60px);
+    z-index: 1;
+  }
+
+  .hero-orb--1 {
+    width: 220px;
+    height: 220px;
+    background: var(--color-accent);
+    opacity: 0.35;
+    top: -40px;
+    right: -40px;
+  }
+
+  .hero-orb--2 {
+    width: 180px;
+    height: 180px;
+    background: var(--color-accent-2);
+    opacity: 0.3;
+    bottom: -30px;
+    left: -30px;
   }
 
   @media (max-width: 1024px) {
-    .hero-image {
-      position: relative;
-      width: 100%;
-      transform: none;
-      margin-top: 2rem;
+    .hero-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-12);
+    }
+
+    .hero-visual {
+      min-height: 320px;
+      max-width: 540px;
+      margin: 0 auto;
     }
   }
 
   @media (max-width: 768px) {
     .hero {
-      padding: 6rem 0 2rem;
-    }
-
-    h1 {
-      font-size: 2.5rem;
+      padding: calc(var(--header-height) + var(--space-10)) 0 var(--space-12);
     }
 
     .hero-buttons {
       flex-direction: column;
+      align-items: stretch;
     }
 
-    .btn {
+    .hero-buttons .btn {
       width: 100%;
-      text-align: center;
+    }
+
+    .hero-trust {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--space-3);
     }
   }
 </style>

@@ -7,15 +7,17 @@ import Layout from '../layouts/Layout.astro';
   description="La página que buscás no existe o fue movida a otra ubicación."
 >
   <div class="error-page">
-    <div class="container">
-      <div class="error-content">
-        <h1 class="glitch" data-text="404">404</h1>
-        <h2>¡Ups! Parece que te has perdido en el ciberespacio</h2>
-        <p>La página que buscas no existe o ha sido movida a otra ubicación.</p>
-        <div class="actions">
-          <a href="/" class="btn btn-primary">Volver al Inicio</a>
-          <a href="/#contacto" class="btn btn-secondary">Contactarnos</a>
-        </div>
+    <div class="error-bg" aria-hidden="true">
+      <div class="error-grid"></div>
+    </div>
+
+    <div class="container container--narrow error-content">
+      <h1 class="error-code glitch" data-text="404">404</h1>
+      <h2 class="error-title">¡Ups! Parece que te has perdido en el ciberespacio</h2>
+      <p class="error-lead">La página que buscas no existe o ha sido movida a otra ubicación.</p>
+      <div class="error-actions">
+        <a href="/" class="btn btn--primary btn--lg">Volver al Inicio</a>
+        <a href="/#contacto" class="btn btn--secondary btn--lg">Contactarnos</a>
       </div>
     </div>
   </div>
@@ -23,149 +25,145 @@ import Layout from '../layouts/Layout.astro';
 
 <style>
   .error-page {
+    position: relative;
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 2rem;
+    padding: var(--space-12) var(--space-4);
     text-align: center;
+    overflow: hidden;
+  }
+
+  .error-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .error-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(99, 102, 241, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(99, 102, 241, 0.08) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse at center, #000 0%, transparent 70%);
+    -webkit-mask-image: radial-gradient(ellipse at center, #000 0%, transparent 70%);
   }
 
   .error-content {
-    max-width: 600px;
-    margin: 0 auto;
-  }
-
-  .glitch {
-    font-size: 8rem;
-    font-weight: bold;
     position: relative;
-    text-shadow:
-      0.05em 0 0 var(--accent),
-      -0.025em -0.05em 0 var(--secondary),
-      0.025em 0.05em 0 var(--highlight);
-    animation: glitch 1s infinite;
-    margin-bottom: 1rem;
-    letter-spacing: 0.2em;
+    z-index: 1;
   }
 
-  @keyframes glitch {
-    0% {
-      text-shadow:
-        0.05em 0 0 var(--accent),
-        -0.025em -0.05em 0 var(--secondary),
-        0.025em 0.05em 0 var(--highlight);
-    }
-    14% {
-      text-shadow:
-        0.05em 0 0 var(--accent),
-        -0.025em -0.05em 0 var(--secondary),
-        0.025em 0.05em 0 var(--highlight);
-    }
-    15% {
-      text-shadow:
-        -0.05em -0.025em 0 var(--accent),
-        0.025em 0.025em 0 var(--secondary),
-        -0.05em -0.05em 0 var(--highlight);
-    }
-    49% {
-      text-shadow:
-        -0.05em -0.025em 0 var(--accent),
-        0.025em 0.025em 0 var(--secondary),
-        -0.05em -0.05em 0 var(--highlight);
-    }
-    50% {
-      text-shadow:
-        0.025em 0.05em 0 var(--accent),
-        0.05em 0 0 var(--secondary),
-        0 -0.05em 0 var(--highlight);
-    }
-    99% {
-      text-shadow:
-        0.025em 0.05em 0 var(--accent),
-        0.05em 0 0 var(--secondary),
-        0 -0.05em 0 var(--highlight);
-    }
-    100% {
-      text-shadow:
-        -0.025em 0 0 var(--accent),
-        -0.025em -0.025em 0 var(--secondary),
-        -0.025em -0.05em 0 var(--highlight);
-    }
-  }
-
-  h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    background: linear-gradient(135deg, var(--text-primary), var(--secondary));
+  .error-code {
+    font-size: clamp(6rem, 18vw, 10rem);
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.05em;
+    margin-bottom: var(--space-4);
+    background: var(--gradient-text);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+    position: relative;
   }
 
-  p {
-    font-size: 1.2rem;
-    color: var(--text-secondary);
-    margin-bottom: 2rem;
+  .error-code.glitch {
+    animation: glitch 3s infinite;
   }
 
-  .actions {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
+  .error-code.glitch::before,
+  .error-code.glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    inset: 0;
+    background: var(--gradient-text);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    pointer-events: none;
   }
 
-  .btn {
-    padding: 0.8em 1.6em;
-    border-radius: 50px;
+  .error-code.glitch::before {
+    animation: glitch-top 3s infinite;
+    clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+  }
+
+  .error-code.glitch::after {
+    animation: glitch-bottom 3s infinite;
+    clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+  }
+
+  @keyframes glitch-top {
+    0%,
+    90%,
+    100% {
+      transform: translate(0);
+    }
+    92% {
+      transform: translate(-4px, -2px);
+    }
+    94% {
+      transform: translate(4px, 2px);
+    }
+    96% {
+      transform: translate(-2px, 1px);
+    }
+  }
+
+  @keyframes glitch-bottom {
+    0%,
+    90%,
+    100% {
+      transform: translate(0);
+    }
+    91% {
+      transform: translate(4px, 2px);
+    }
+    93% {
+      transform: translate(-4px, -2px);
+    }
+    95% {
+      transform: translate(2px, -1px);
+    }
+  }
+
+  .error-title {
+    font-size: clamp(var(--text-xl), 3vw, var(--text-2xl));
     font-weight: 600;
-    text-decoration: none;
-    transition: all 0.3s ease;
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-3);
+    letter-spacing: -0.01em;
   }
 
-  .btn-primary {
-    background: var(--secondary-strong);
-    color: white;
+  .error-lead {
+    font-size: var(--text-lg);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-8);
+    line-height: var(--leading-relaxed);
   }
 
-  .btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(185, 120, 204, 0.4);
-  }
-
-  .btn-secondary {
-    background: transparent;
-    color: var(--text-primary);
-    border: 2px solid var(--secondary);
-  }
-
-  .btn-secondary:hover {
-    background: var(--secondary-strong);
-    color: white;
-    transform: translateY(-2px);
+  .error-actions {
+    display: flex;
+    gap: var(--space-3);
+    justify-content: center;
+    flex-wrap: wrap;
   }
 
   @media (max-width: 768px) {
-    .glitch {
-      font-size: 6rem;
-    }
-
-    h2 {
-      font-size: 1.5rem;
-    }
-
-    .actions {
+    .error-actions {
       flex-direction: column;
+      align-items: stretch;
     }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .glitch {
+    .error-code.glitch,
+    .error-code.glitch::before,
+    .error-code.glitch::after {
       animation: none;
-      text-shadow:
-        0.05em 0 0 var(--accent),
-        -0.025em -0.05em 0 var(--secondary-strong),
-        0.025em 0.05em 0 var(--highlight);
     }
   }
 </style>

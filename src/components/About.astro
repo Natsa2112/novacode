@@ -8,25 +8,99 @@
       destacar en el competitivo mercado digital, combinando creatividad, tecnología de vanguardia y
       estrategias personalizadas para impulsar tu crecimiento online.
     </p>
+
+    <ul class="stats">
+      <li class="stat">
+        <span class="stat__value" data-suffix="+">50</span>
+        <span class="stat__label">Proyectos entregados</span>
+      </li>
+      <li class="stat">
+        <span class="stat__value" data-suffix="+">5</span>
+        <span class="stat__label">Años de experiencia</span>
+      </li>
+      <li class="stat">
+        <span class="stat__value" data-suffix="%">98</span>
+        <span class="stat__label">Clientes satisfechos</span>
+      </li>
+      <li class="stat">
+        <span class="stat__value" data-suffix="/7">24</span>
+        <span class="stat__label">Soporte continuo</span>
+      </li>
+    </ul>
   </div>
 </section>
 
 <style>
   .intro {
     text-align: center;
-    background: linear-gradient(
-      180deg,
-      rgba(0, 0, 0, 0) 0%,
-      rgba(185, 120, 204, 0.05) 50%,
-      rgba(0, 0, 0, 0) 100%
-    );
   }
 
   .intro-text {
-    max-width: 800px;
-    margin: 0 auto;
-    font-size: 1.2rem;
-    line-height: 1.8;
-    color: var(--text-secondary);
+    max-width: 760px;
+    margin: 0 auto var(--space-16);
+    font-size: var(--text-lg);
+    line-height: var(--leading-relaxed);
+    color: var(--color-text-secondary);
+  }
+
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-4);
+    margin: 0;
+    padding: var(--space-6);
+    background: var(--color-bg-surface);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-2xl);
+    list-style: none;
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-4);
+    border-radius: var(--radius-lg);
+    transition: background var(--duration-base) var(--ease-out);
+  }
+
+  .stat:hover {
+    background: var(--color-bg-elevated);
+  }
+
+  .stat__value {
+    font-size: clamp(var(--text-3xl), 4vw, var(--text-4xl));
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    background: var(--gradient-text);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .stat__value::after {
+    content: attr(data-suffix);
+    font-size: 0.7em;
+    font-weight: 700;
+  }
+
+  .stat__label {
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    text-align: center;
+  }
+
+  @media (max-width: 768px) {
+    .stats {
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-2);
+      padding: var(--space-4);
+    }
+
+    .stat {
+      padding: var(--space-3);
+    }
   }
 </style>
