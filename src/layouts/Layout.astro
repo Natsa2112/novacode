@@ -45,6 +45,7 @@ const ogImage = new URL(image, Astro.site).toString();
     <slot name="head" />
   </head>
   <body>
+    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
     <div class="gradient-background">
       <slot />
     </div>
