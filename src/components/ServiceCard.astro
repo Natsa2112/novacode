@@ -16,29 +16,21 @@ const href = '#contacto';
   <span class="service-card__border" aria-hidden="true"></span>
   <span class="service-card__grid" aria-hidden="true"></span>
   <span class="service-card__shine" aria-hidden="true"></span>
-  <span class="service-card__bracket service-card__bracket--tl" aria-hidden="true"></span>
-  <span class="service-card__bracket service-card__bracket--br" aria-hidden="true"></span>
 
   <header class="service-card__head">
     <div class="service-card__icon">
+      <span class="service-card__ring" aria-hidden="true"></span>
       <span class="service-card__icon-glow" aria-hidden="true"></span>
       <Icon name={service.icon} size={26} />
       <span class="service-card__pulse" aria-hidden="true"></span>
     </div>
-    <span class="service-card__number" aria-hidden="true">
-      <span class="service-card__number-dot" aria-hidden="true"></span>
-      {number}
-    </span>
+    <span class="service-card__number" aria-hidden="true">{number}</span>
   </header>
 
   <h3 class="service-card__title">{service.title}</h3>
   <p class="service-card__desc">{service.description}</p>
 
-  <div class="service-card__divider" aria-hidden="true">
-    <span class="service-card__divider-line"></span>
-    <span class="service-card__divider-glyph">◆</span>
-    <span class="service-card__divider-line"></span>
-  </div>
+  <div class="service-card__divider" aria-hidden="true"></div>
 
   <ul class="service-card__features">
     {
@@ -62,6 +54,7 @@ const href = '#contacto';
   </ul>
 
   <a class="service-card__cta" href={href} aria-label={`Conocer más sobre ${service.title}`}>
+    <span class="service-card__cta-shine" aria-hidden="true"></span>
     <span class="service-card__cta-label">Conocer más</span>
     <span class="service-card__cta-arrow" aria-hidden="true">
       <svg viewBox="0 0 20 20" fill="none">

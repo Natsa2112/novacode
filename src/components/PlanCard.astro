@@ -11,11 +11,9 @@ const tierLevel = index + 1;
 const totalTiers = 3;
 ---
 
-<article class:list={['plan-card', { featured: plan.featured }]} data-tier={tierLevel}>
+<article class:list={['plan-card', { 'plan-card--featured': plan.featured }]} data-tier={tierLevel}>
   <span class="plan-card__border" aria-hidden="true"></span>
   <span class="plan-card__grid" aria-hidden="true"></span>
-  <span class="plan-card__bracket plan-card__bracket--tl" aria-hidden="true"></span>
-  <span class="plan-card__bracket plan-card__bracket--br" aria-hidden="true"></span>
 
   {
     plan.badge && (
@@ -43,11 +41,7 @@ const totalTiers = 3;
   <h3 class="plan-card__name">{plan.name}</h3>
   <p class="plan-card__desc">{plan.description}</p>
 
-  <div class="plan-card__divider" aria-hidden="true">
-    <span class="plan-card__divider-line"></span>
-    <span class="plan-card__divider-glyph">◆</span>
-    <span class="plan-card__divider-line"></span>
-  </div>
+  <div class="plan-card__divider" aria-hidden="true"></div>
 
   <ul class="plan-card__features">
     {
@@ -71,6 +65,7 @@ const totalTiers = 3;
   </ul>
 
   <a href={plan.cta.href} class:list={['plan-card__cta', `plan-card__cta--${plan.cta.variant}`]}>
+    <span class="plan-card__cta-shine" aria-hidden="true"></span>
     <span>{plan.cta.label}</span>
     <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
       <path

@@ -21,7 +21,6 @@ import { plans } from '../config/site';
 </section>
 
 <style>
-  /* ---------- Section decoration ---------- */
   .section {
     position: relative;
   }
@@ -46,7 +45,6 @@ import { plans } from '../config/site';
     z-index: 1;
   }
 
-  /* ---------- Grid ---------- */
   .plans-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -62,12 +60,32 @@ import { plans } from '../config/site';
     }
   }
 
-  /* ---------- Card base ---------- */
+  :global(.plan-card[data-tier='1']) {
+    --tier-1: #94a3b8;
+    --tier-2: #64748b;
+    --tier-glow: rgba(148, 163, 184, 0.2);
+    --tier-soft: rgba(148, 163, 184, 0.1);
+  }
+
+  :global(.plan-card[data-tier='2']) {
+    --tier-1: #6366f1;
+    --tier-2: #06b6d4;
+    --tier-glow: rgba(99, 102, 241, 0.4);
+    --tier-soft: rgba(99, 102, 241, 0.12);
+  }
+
+  :global(.plan-card[data-tier='3']) {
+    --tier-1: #f59e0b;
+    --tier-2: #ec4899;
+    --tier-glow: rgba(245, 158, 11, 0.3);
+    --tier-soft: rgba(245, 158, 11, 0.1);
+  }
+
   :global(.plan-card) {
     position: relative;
     display: flex;
     flex-direction: column;
-    padding: var(--space-7) var(--space-7) var(--space-6);
+    padding: var(--space-8) var(--space-7) var(--space-6);
     background: linear-gradient(180deg, var(--color-bg-surface) 0%, var(--color-bg-base) 100%);
     border: 1px solid var(--color-border-subtle);
     border-radius: var(--radius-xl);
@@ -79,52 +97,53 @@ import { plans } from '../config/site';
       box-shadow var(--duration-slow) var(--ease-out);
   }
 
-  :global(.plan-card[data-tier='1']) {
-    --tier-1: #94a3b8;
-    --tier-2: #64748b;
-    --tier-glow: rgba(148, 163, 184, 0.25);
-    --tier-soft: rgba(148, 163, 184, 0.12);
-  }
-
-  :global(.plan-card[data-tier='2']) {
-    --tier-1: #6366f1;
-    --tier-2: #06b6d4;
-    --tier-glow: rgba(99, 102, 241, 0.5);
-    --tier-soft: rgba(99, 102, 241, 0.15);
-  }
-
-  :global(.plan-card[data-tier='3']) {
-    --tier-1: #f59e0b;
-    --tier-2: #ec4899;
-    --tier-glow: rgba(245, 158, 11, 0.4);
-    --tier-soft: rgba(245, 158, 11, 0.15);
-  }
-
-  /* ---------- Hover lift ---------- */
   :global(.plan-card:hover) {
     transform: translateY(-6px);
     border-color: transparent;
-    box-shadow: 0 24px 48px -16px rgba(0, 0, 0, 0.5);
+    box-shadow:
+      0 2px 4px rgba(0, 0, 0, 0.08),
+      0 12px 24px -8px rgba(0, 0, 0, 0.2),
+      0 32px 72px -20px rgba(0, 0, 0, 0.4);
   }
 
-  /* ---------- Featured: elevated, glowing ---------- */
-  :global(.plan-card.featured) {
+  :global(.plan-card--featured) {
     background:
       radial-gradient(ellipse 80% 50% at 50% 0%, var(--tier-soft) 0%, transparent 70%),
       linear-gradient(180deg, var(--color-bg-surface) 0%, var(--color-bg-base) 100%);
     box-shadow:
-      0 24px 64px -16px var(--tier-glow),
-      0 0 0 1px var(--tier-1);
+      0 0 0 1px var(--tier-1),
+      0 2px 4px rgba(0, 0, 0, 0.08),
+      0 24px 64px -16px var(--tier-glow);
   }
 
-  :global(.plan-card.featured:hover) {
+  :global(.plan-card--featured:hover) {
     transform: translateY(-10px);
     box-shadow:
-      0 32px 72px -16px var(--tier-glow),
-      0 0 0 1px var(--tier-1);
+      0 0 0 1px var(--tier-1),
+      0 32px 48px -16px rgba(0, 0, 0, 0.4),
+      0 48px 96px -20px var(--tier-glow);
   }
 
-  /* ---------- Gradient border layer ---------- */
+  :global(.plan-card--featured::after) {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    right: 4px;
+    bottom: 4px;
+    border-radius: inherit;
+    border: 1px solid transparent;
+    background: linear-gradient(135deg, var(--tier-1), var(--tier-2)) border-box;
+    -webkit-mask:
+      linear-gradient(#fff 0 0) padding-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.5;
+  }
+
   :global(.plan-card__border) {
     position: absolute;
     inset: 0;
@@ -146,18 +165,17 @@ import { plans } from '../config/site';
     opacity: 0.7;
   }
 
-  :global(.plan-card.featured .plan-card__border) {
+  :global(.plan-card--featured .plan-card__border) {
     opacity: 0.9;
   }
 
-  /* ---------- Background grid pattern ---------- */
   :global(.plan-card__grid) {
     position: absolute;
     inset: 0;
     background-image:
       linear-gradient(var(--tier-1) 1px, transparent 1px),
       linear-gradient(90deg, var(--tier-1) 1px, transparent 1px);
-    background-size: 32px 32px;
+    background-size: 36px 36px;
     opacity: 0;
     mask-image: radial-gradient(ellipse 60% 50% at 50% 0%, #000 0%, transparent 70%);
     -webkit-mask-image: radial-gradient(ellipse 60% 50% at 50% 0%, #000 0%, transparent 70%);
@@ -166,63 +184,43 @@ import { plans } from '../config/site';
     z-index: 0;
   }
 
-  :global(.plan-card.featured .plan-card__grid) {
-    opacity: 0.05;
+  :global(.plan-card--featured .plan-card__grid) {
+    opacity: 0.06;
   }
 
   :global(.plan-card:hover .plan-card__grid) {
     opacity: 0.06;
   }
 
-  /* ---------- Corner brackets ---------- */
-  :global(.plan-card__bracket) {
-    position: absolute;
-    width: 14px;
-    height: 14px;
-    border: 1.5px solid var(--tier-1);
-    opacity: 0.4;
-    transition: opacity var(--duration-base) var(--ease-out);
-    pointer-events: none;
-    z-index: 3;
-  }
-
-  :global(.plan-card__bracket--tl) {
-    top: 10px;
-    left: 10px;
-    border-right: none;
-    border-bottom: none;
-  }
-
-  :global(.plan-card__bracket--br) {
-    bottom: 10px;
-    right: 10px;
-    border-left: none;
-    border-top: none;
-  }
-
-  :global(.plan-card:hover .plan-card__bracket),
-  :global(.plan-card.featured .plan-card__bracket) {
-    opacity: 0.9;
-  }
-
-  /* ---------- Badge (featured only) ---------- */
   :global(.plan-badge) {
     position: absolute;
-    top: -1px;
-    right: -1px;
+    top: 0;
+    right: 0;
     display: inline-flex;
     align-items: center;
     gap: var(--space-2);
     background: linear-gradient(135deg, var(--tier-1), var(--tier-2));
-    color: var(--color-text-on-accent);
+    color: #fff;
     padding: var(--space-2) var(--space-4);
-    border-bottom-left-radius: var(--radius-lg);
+    border-radius: 0 var(--radius-xl) 0 var(--radius-lg);
     font-size: var(--text-xs);
     font-weight: 700;
     letter-spacing: var(--tracking-wide);
     text-transform: uppercase;
     box-shadow: 0 8px 24px -8px var(--tier-glow);
     z-index: 4;
+    overflow: hidden;
+  }
+
+  :global(.plan-badge::before) {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+    animation: badge-shine 2.5s ease-in-out infinite;
   }
 
   :global(.plan-badge__dot) {
@@ -244,7 +242,18 @@ import { plans } from '../config/site';
     }
   }
 
-  /* ---------- Header: tier + code ---------- */
+  @keyframes badge-shine {
+    0% {
+      left: -100%;
+    }
+    50% {
+      left: 100%;
+    }
+    100% {
+      left: 100%;
+    }
+  }
+
   :global(.plan-card__head) {
     display: flex;
     align-items: center;
@@ -257,15 +266,17 @@ import { plans } from '../config/site';
   :global(.plan-card__tier) {
     display: inline-flex;
     align-items: flex-end;
-    gap: 3px;
-    height: 14px;
+    gap: 4px;
+    height: 16px;
   }
 
   :global(.plan-card__tier-bar) {
-    width: 4px;
+    width: 5px;
     background: var(--color-border-default);
-    border-radius: 1px;
-    transition: background var(--duration-base) var(--ease-out);
+    border-radius: 2px;
+    transition:
+      background var(--duration-base) var(--ease-out),
+      box-shadow var(--duration-base) var(--ease-out);
   }
 
   :global(.plan-card__tier-bar:nth-child(1)) {
@@ -275,12 +286,12 @@ import { plans } from '../config/site';
     height: 10px;
   }
   :global(.plan-card__tier-bar:nth-child(3)) {
-    height: 14px;
+    height: 16px;
   }
 
   :global(.plan-card__tier-bar.active) {
     background: linear-gradient(180deg, var(--tier-1), var(--tier-2));
-    box-shadow: 0 0 6px var(--tier-soft);
+    box-shadow: 0 0 8px var(--tier-soft);
   }
 
   :global(.plan-card__code) {
@@ -292,7 +303,6 @@ import { plans } from '../config/site';
     text-transform: uppercase;
   }
 
-  /* ---------- Typography ---------- */
   :global(.plan-card__name) {
     font-size: var(--text-2xl);
     font-weight: 800;
@@ -304,7 +314,7 @@ import { plans } from '../config/site';
     z-index: 2;
   }
 
-  :global(.plan-card.featured .plan-card__name) {
+  :global(.plan-card--featured .plan-card__name) {
     background: linear-gradient(135deg, var(--tier-1), var(--tier-2));
     -webkit-background-clip: text;
     background-clip: text;
@@ -321,35 +331,15 @@ import { plans } from '../config/site';
     z-index: 2;
   }
 
-  /* ---------- Divider ---------- */
   :global(.plan-card__divider) {
-    display: flex;
-    align-items: center;
-    gap: var(--space-2);
+    height: 1px;
     margin: var(--space-6) 0;
+    background: linear-gradient(90deg, var(--color-border-subtle), var(--tier-1));
+    opacity: 0.4;
     position: relative;
     z-index: 2;
   }
 
-  :global(.plan-card__divider-line) {
-    flex: 1;
-    height: 1px;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      var(--color-border-subtle) 30%,
-      var(--tier-1) 100%
-    );
-    opacity: 0.6;
-  }
-
-  :global(.plan-card__divider-glyph) {
-    color: var(--tier-1);
-    font-size: 8px;
-    opacity: 0.7;
-  }
-
-  /* ---------- Features ---------- */
   :global(.plan-card__features) {
     list-style: none;
     margin: 0 0 var(--space-7);
@@ -381,11 +371,9 @@ import { plans } from '../config/site';
     border-radius: 50%;
     color: var(--tier-1);
     background: var(--tier-soft);
-    border: 1px solid transparent;
     transition:
       transform var(--duration-base) var(--ease-spring),
-      background var(--duration-base) var(--ease-out),
-      border-color var(--duration-base) var(--ease-out);
+      background var(--duration-base) var(--ease-out);
   }
 
   :global(.plan-card__check svg) {
@@ -394,12 +382,11 @@ import { plans } from '../config/site';
   }
 
   :global(.plan-card:hover .plan-card__check) {
-    transform: scale(1.1);
-    background: var(--color-bg-elevated);
-    border-color: var(--tier-1);
+    transform: scale(1.12);
+    background: var(--tier-1);
+    color: #fff;
   }
 
-  /* ---------- CTA ---------- */
   :global(.plan-card__cta) {
     display: flex;
     align-items: center;
@@ -413,6 +400,7 @@ import { plans } from '../config/site';
     text-decoration: none;
     position: relative;
     z-index: 2;
+    overflow: hidden;
     transition:
       transform var(--duration-base) var(--ease-out),
       box-shadow var(--duration-base) var(--ease-out);
@@ -425,18 +413,33 @@ import { plans } from '../config/site';
   }
 
   :global(.plan-card__cta--primary) {
-    color: var(--color-text-on-accent);
+    color: #fff;
     background: linear-gradient(135deg, var(--tier-1), var(--tier-2));
-    box-shadow: 0 8px 24px -8px var(--tier-glow);
+    box-shadow: 0 4px 16px -4px var(--tier-glow);
+  }
+
+  :global(.plan-card__cta-shine) {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    pointer-events: none;
   }
 
   :global(.plan-card__cta--primary:hover) {
     transform: translateY(-2px);
-    box-shadow: 0 12px 32px -8px var(--tier-glow);
+    box-shadow: 0 8px 24px -4px var(--tier-glow);
   }
 
   :global(.plan-card__cta--primary:hover svg) {
-    transform: translateX(3px);
+    transform: translateX(4px);
+  }
+
+  :global(.plan-card__cta--primary:hover .plan-card__cta-shine) {
+    left: 100%;
+    transition: left 0.5s var(--ease-out);
   }
 
   :global(.plan-card__cta--outline) {
@@ -453,19 +456,21 @@ import { plans } from '../config/site';
   }
 
   :global(.plan-card__cta--outline:hover svg) {
-    transform: translateX(3px);
+    transform: translateX(4px);
   }
 
   @media (prefers-reduced-motion: reduce) {
     :global(.plan-card),
     :global(.plan-card *),
+    :global(.plan-card::after),
     :global(.plan-card__border),
     :global(.plan-card__grid),
-    :global(.plan-card__bracket),
     :global(.plan-card__tier-bar),
     :global(.plan-card__check),
     :global(.plan-card__cta),
     :global(.plan-card__cta svg),
+    :global(.plan-card__cta-shine),
+    :global(.plan-badge),
     :global(.plan-badge__dot) {
       transition: none;
       animation: none;
