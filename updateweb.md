@@ -13,7 +13,7 @@ Marca con `[x]` las etapas que se van a ejecutar. Las que queden sin marcar qued
 - [x] **Etapa 1** — Bugs críticos y funcionalidad rota (🔴)
 - [x] **Etapa 2** — Seguridad y configuración del proyecto (🟠)
 - [x] **Etapa 3** — Rendimiento y SEO (🟡)
-- [ ] **Etapa 4** — Accesibilidad (a11y) (🟢)
+- [x] **Etapa 4** — Accesibilidad (a11y) (🟢)
 - [ ] **Etapa 5** — Calidad de código y DX (🔵)
 - [ ] **Etapa 6** — Funcionalidades nuevas / opcional (⚪)
 
@@ -24,10 +24,10 @@ Marca con `[x]` las etapas que se van a ejecutar. Las que queden sin marcar qued
 | Etapa 1 — Bugs críticos (🔴) | 8 | ✅ Completada |
 | Etapa 2 — Seguridad y config (🟠) | 6 | ✅ Completada |
 | Etapa 3 — Rendimiento y SEO (🟡) | 12 | ✅ Completada |
-| Etapa 4 — Accesibilidad (a11y) (🟢) | 9 | ⏳ Pendiente |
+| Etapa 4 — Accesibilidad (a11y) (🟢) | 9 | ✅ Completada |
 | Etapa 5 — Calidad y DX (🔵) | 12 | ⏳ Pendiente |
 | Etapa 6 — Nuevas funcionalidades (⚪) | 4 | ⏳ Pendiente |
-| **Total** | **51** | **26 / 51** |
+| **Total** | **51** | **35 / 51** |
 
 > Actualizá la columna "Estado" a `🔄 En curso` o `✅ Completada` y el contador `0/51` a medida que avances.
 
@@ -86,15 +86,15 @@ Marca con `[x]` las etapas que se van a ejecutar. Las que queden sin marcar qued
 
 > 9 tareas. Cumplir WCAG AA y mejorar la experiencia para usuarios con tecnologías de asistencia.
 
-- [ ] Añadir link "Saltar al contenido principal" en `Layout.astro` antes del header (visible al focus, oculto visualmente).
-- [ ] Añadir `aria-expanded` y `aria-controls` al botón de menú móvil en `Header.astro:8` — para que lectores de pantalla anuncien el estado.
-- [ ] Hacer que el menú móvil se cierre con la tecla `Escape` y atrape el foco mientras está abierto.
-- [ ] Añadir `prefers-reduced-motion: reduce` en `@keyframes glitch` de `src/pages/404.astro:47` y en las transiciones del header — la animación puede provocar mareos.
-- [ ] Marcar el `<option value="">` del select como `<option value="" disabled selected hidden>` en `Contact.astro:66` para que no sea seleccionable y actúe solo como placeholder.
-- [ ] Asociar `<label>` a cada input del formulario en `Contact.astro:55-75` — actualmente solo hay `placeholder` (no accesible para screen readers y desaparece al escribir). Usar `for` + `id` o envolver con `<label>`.
-- [ ] Revisar contraste de color — el secundario `#b978cc` sobre fondo negro `#000` falla WCAG AA para texto < 18px. Medir con axe DevTools y oscurecerlo o usarlo solo para elementos grandes/no textuales.
-- [ ] Añadir `aria-label` a los links de redes sociales del footer (`Footer.astro:20-23`) una vez corregidos.
-- [ ] Corregir la errata "Tambien somos" → "También somos" en `src/components/About.astro:5`.
+- [x] Añadir link "Saltar al contenido principal" en `Layout.astro` antes del header (visible al focus, oculto visualmente).
+- [x] Añadir `aria-expanded` y `aria-controls` al botón de menú móvil en `Header.astro:8` — para que lectores de pantalla anuncien el estado.
+- [x] Hacer que el menú móvil se cierre con la tecla `Escape` y atrape el foco mientras está abierto.
+- [x] Añadir `prefers-reduced-motion: reduce` en `@keyframes glitch` de `src/pages/404.astro:47` y en las transiciones del header — la animación puede provocar mareos.
+- [x] Marcar el `<option value="">` del select como `<option value="" disabled selected hidden>` en `Contact.astro:66` para que no sea seleccionable y actúe solo como placeholder.
+- [x] Asociar `<label>` a cada input del formulario en `Contact.astro:55-75` — actualmente solo hay `placeholder` (no accesible para screen readers y desaparece al escribir). Usar `for` + `id` o envolver con `<label>`.
+- [x] Revisar contraste de color — el secundario `#b978cc` sobre fondo negro `#000` falla WCAG AA para texto < 18px. Medir con axe DevTools y oscurecerlo o usarlo solo para elementos grandes/no textuales.
+- [x] Añadir `aria-label` a los links de redes sociales del footer (`Footer.astro:20-23`) una vez corregidos.
+- [x] Corregir la errata "Tambien somos" → "También somos" en `src/components/About.astro:5`.
 
 ---
 
