@@ -3,19 +3,82 @@ import type { Plan } from '../types';
 
 interface Props {
   plan: Plan;
+  index: number;
 }
 
-const { plan } = Astro.props;
+const { plan, index } = Astro.props;
+const tierLevel = index + 1;
+const totalTiers = 3;
 ---
 
-<div class:list={['plan-card', { featured: plan.featured }]}>
-  {plan.badge && <div class="plan-badge">{plan.badge}</div>}
-  <div class="plan-header">
-    <h3>{plan.name}</h3>
-    <p class="plan-description">{plan.description}</p>
+<article class:list={['plan-card', { featured: plan.featured }]} data-tier={tierLevel}>
+  <span class="plan-card__border" aria-hidden="true"></span>
+  <span class="plan-card__grid" aria-hidden="true"></span>
+  <span class="plan-card__bracket plan-card__bracket--tl" aria-hidden="true"></span>
+  <span class="plan-card__bracket plan-card__bracket--br" aria-hidden="true"></span>
+
+  {
+    plan.badge && (
+      <div class="plan-badge">
+        <span class="plan-badge__dot" aria-hidden="true" />
+        {plan.badge}
+      </div>
+    )
+  }
+
+  <header class="plan-card__head">
+    <div class="plan-card__tier" aria-label={`Nivel ${tierLevel} de ${totalTiers}`}>
+      {
+        Array.from({ length: totalTiers }).map((_, i) => (
+          <span
+            class:list={['plan-card__tier-bar', { active: i < tierLevel }]}
+            aria-hidden="true"
+          />
+        ))
+      }
+    </div>
+    <span class="plan-card__code" aria-hidden="true">/{String(tierLevel).padStart(2, '0')}</span>
+  </header>
+
+  <h3 class="plan-card__name">{plan.name}</h3>
+  <p class="plan-card__desc">{plan.description}</p>
+
+  <div class="plan-card__divider" aria-hidden="true">
+    <span class="plan-card__divider-line"></span>
+    <span class="plan-card__divider-glyph">◆</span>
+    <span class="plan-card__divider-line"></span>
   </div>
-  <ul class="features">
-    {plan.features.map((f) => <li>{f}</li>)}
+
+  <ul class="plan-card__features">
+    {
+      plan.features.map((f) => (
+        <li>
+          <span class="plan-card__check" aria-hidden="true">
+            <svg viewBox="0 0 20 20" fill="none">
+              <path
+                d="M4.5 10.5l3 3 8-8"
+                stroke="currentColor"
+                stroke-width="2.4"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </span>
+          <span>{f}</span>
+        </li>
+      ))
+    }
   </ul>
-  <a href={plan.cta.href} class:list={['btn', `btn-${plan.cta.variant}`]}>{plan.cta.label}</a>
-</div>
+
+  <a href={plan.cta.href} class:list={['plan-card__cta', `plan-card__cta--${plan.cta.variant}`]}>
+    <span>{plan.cta.label}</span>
+    <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+      <path
+        d="M4 10h12m0 0l-4-4m4 4l-4 4"
+        stroke="currentColor"
+        stroke-width="1.8"
+        stroke-linecap="round"
+        stroke-linejoin="round"></path>
+    </svg>
+  </a>
+</article>

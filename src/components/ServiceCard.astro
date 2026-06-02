@@ -14,48 +14,64 @@ const href = '#contacto';
 
 <article class="service-card" data-accent={service.icon}>
   <span class="service-card__border" aria-hidden="true"></span>
-  <span class="service-card__accent" aria-hidden="true"></span>
-  <span class="service-card__pattern" aria-hidden="true"></span>
+  <span class="service-card__grid" aria-hidden="true"></span>
+  <span class="service-card__shine" aria-hidden="true"></span>
+  <span class="service-card__bracket service-card__bracket--tl" aria-hidden="true"></span>
+  <span class="service-card__bracket service-card__bracket--br" aria-hidden="true"></span>
 
   <header class="service-card__head">
     <div class="service-card__icon">
-      <Icon name={service.icon} size={24} />
-      <span class="service-card__spark" aria-hidden="true"></span>
+      <span class="service-card__icon-glow" aria-hidden="true"></span>
+      <Icon name={service.icon} size={26} />
+      <span class="service-card__pulse" aria-hidden="true"></span>
     </div>
-    <span class="service-card__number" aria-hidden="true">{number}</span>
+    <span class="service-card__number" aria-hidden="true">
+      <span class="service-card__number-dot" aria-hidden="true"></span>
+      {number}
+    </span>
   </header>
 
   <h3 class="service-card__title">{service.title}</h3>
   <p class="service-card__desc">{service.description}</p>
 
+  <div class="service-card__divider" aria-hidden="true">
+    <span class="service-card__divider-line"></span>
+    <span class="service-card__divider-glyph">◆</span>
+    <span class="service-card__divider-line"></span>
+  </div>
+
   <ul class="service-card__features">
     {
       service.features.map((f) => (
         <li>
-          <svg class="service-card__check" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-            <path
-              d="M4.5 10.5l3 3 8-8"
-              stroke="currentColor"
-              stroke-width="2.2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
+          <span class="service-card__check" aria-hidden="true">
+            <svg viewBox="0 0 20 20" fill="none">
+              <path
+                d="M4.5 10.5l3 3 8-8"
+                stroke="currentColor"
+                stroke-width="2.4"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </span>
           <span>{f}</span>
         </li>
       ))
     }
   </ul>
 
-  <a class="service-card__link" href={href} aria-label={`Conocer más sobre ${service.title}`}>
-    <span>Conocer más</span>
-    <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
-      <path
-        d="M4 10h12m0 0l-4-4m4 4l-4 4"
-        stroke="currentColor"
-        stroke-width="1.8"
-        stroke-linecap="round"
-        stroke-linejoin="round"></path>
-    </svg>
+  <a class="service-card__cta" href={href} aria-label={`Conocer más sobre ${service.title}`}>
+    <span class="service-card__cta-label">Conocer más</span>
+    <span class="service-card__cta-arrow" aria-hidden="true">
+      <svg viewBox="0 0 20 20" fill="none">
+        <path
+          d="M4 10h12m0 0l-4-4m4 4l-4 4"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"></path>
+      </svg>
+    </span>
   </a>
 </article>
