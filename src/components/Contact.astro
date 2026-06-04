@@ -39,7 +39,7 @@ import { contactInfo, socials } from '../config/site';
         </div>
       </aside>
 
-      <form class="contact-form" id="contactForm" action="/api/contact" method="POST" novalidate>
+      <form class="contact-form" id="contactForm" action="/api/contact" method="POST" novalidate data-form-enhanced="false">
         <FormField name="nombre" label="Nombre">
           <input
             type="text"
@@ -109,6 +109,7 @@ import { contactInfo, socials } from '../config/site';
   (() => {
     const form = document.getElementById('contactForm');
     if (!form) return;
+    form.dataset.formEnhanced = 'true';
 
     const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const PHONE_RE = /^[\d\s+\-()]{6,}$/;
@@ -144,7 +145,7 @@ import { contactInfo, socials } from '../config/site';
         errorEl.id = `${name}-error`;
         errorEl.setAttribute('role', 'alert');
         const slot = group.querySelector(':scope > :not(.form-label)') || group.lastElementChild;
-        if (slot) slot.after(errorEl);
+        if (slot && slot.parentNode) slot.parentNode.insertBefore(errorEl, slot.nextSibling);
         else group.appendChild(errorEl);
       }
       errorEl.textContent = message;
