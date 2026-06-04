@@ -1,4 +1,5 @@
 import { env } from 'cloudflare:workers';
+import { contactSchema } from '../../config/validation';
 
 export const prerender = false;
 
@@ -14,10 +15,6 @@ interface ResendResponse {
   id?: string;
   error?: { message: string; statusCode?: number };
 }
-
-const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const PHONE_RE = /^[\d\s+\-()]{6,}$/;
-const SERVICIOS = new Set(['web', 'marketing', 'ecommerce', 'otro']);
 
 const json = (body: unknown, status = 200) =>
   new Response(JSON.stringify(body), {
@@ -139,29 +136,23 @@ export const POST = async ({
     return json({ ok: false, error: 'Payload inválido.' }, 400);
   }
 
-  const nombre = (data.nombre ?? '').trim();
-  const email = (data.email ?? '').trim();
-  const telefono = (data.telefono ?? '').trim();
-  const servicio = (data.servicio ?? '').trim();
-  const mensaje = (data.mensaje ?? '').trim();
+  const parsed = contactSchema.safeParse(data);
 
-  const errors: Record<string, string> = {};
-  if (nombre.length < 2 || nombre.length > 100)
-    errors.nombre = 'Ingresá tu nombre (2-100 caracteres).';
-  if (!EMAIL_RE.test(email) || email.length > 200) errors.email = 'Email inválido.';
-  if (!PHONE_RE.test(telefono) || telefono.length > 30) errors.telefono = 'Teléfono inválido.';
-  if (!SERVICIOS.has(servicio)) errors.servicio = 'Elegí un servicio válido.';
-  if (mensaje.length < 3 || mensaje.length > 2000)
-    errors.mensaje = 'El mensaje debe tener entre 3 y 2000 caracteres.';
-
-  if (Object.keys(errors).length > 0) {
+  if (!parsed.success) {
+    const errors: Record<string, string> = {};
+    for (const issue of parsed.error.issues) {
+      const field = issue.path[0] as string;
+      if (!errors[field]) {
+        errors[field] = issue.message;
+      }
+    }
     return json({ ok: false, errors }, 422);
   }
 
   const ctx = locals.cfContext;
   const receivedAt = new Date().toISOString();
 
-  const logData = { nombre, email, telefono, servicio, mensaje, receivedAt };
+  const logData = { ...parsed.data, receivedAt };
 
   const result = await sendViaResend(logData, env, ctx);
   if (!result.sent) {

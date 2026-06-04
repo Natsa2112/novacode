@@ -8,72 +8,246 @@ interface Props {
 
 const { plan, index } = Astro.props;
 const tierLevel = index + 1;
-const totalTiers = 3;
 ---
 
 <article class:list={['plan-card', { 'plan-card--featured': plan.featured }]} data-tier={tierLevel}>
-  <span class="plan-card__border" aria-hidden="true"></span>
-  <span class="plan-card__grid" aria-hidden="true"></span>
-
-  {
-    plan.badge && (
-      <div class="plan-badge">
-        <span class="plan-badge__dot" aria-hidden="true" />
+  <div class="plan-card__badges">
+    {plan.badge && (
+      <span class="plan-card__popular-badge">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+        </svg>
         {plan.badge}
-      </div>
-    )
-  }
-
-  <header class="plan-card__head">
-    <div class="plan-card__tier" aria-label={`Nivel ${tierLevel} de ${totalTiers}`}>
-      {
-        Array.from({ length: totalTiers }).map((_, i) => (
-          <span
-            class:list={['plan-card__tier-bar', { active: i < tierLevel }]}
-            aria-hidden="true"
-          />
-        ))
-      }
-    </div>
-    <span class="plan-card__code" aria-hidden="true">/{String(tierLevel).padStart(2, '0')}</span>
-  </header>
+      </span>
+    )}
+    <span class="plan-card__feature-count">{plan.features.length} beneficios</span>
+  </div>
 
   <h3 class="plan-card__name">{plan.name}</h3>
   <p class="plan-card__desc">{plan.description}</p>
-
-  <div class="plan-card__divider" aria-hidden="true"></div>
 
   <ul class="plan-card__features">
     {
       plan.features.map((f) => (
         <li>
-          <span class="plan-card__check" aria-hidden="true">
-            <svg viewBox="0 0 20 20" fill="none">
-              <path
-                d="M4.5 10.5l3 3 8-8"
-                stroke="currentColor"
-                stroke-width="2.4"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
-          </span>
+          <svg class="plan-card__check" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path
+              d="M4.5 10.5l3 3 8-8"
+              stroke="currentColor"
+              stroke-width="2.4"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
           <span>{f}</span>
         </li>
       ))
     }
   </ul>
 
-  <a href={plan.cta.href} class:list={['plan-card__cta', `plan-card__cta--${plan.cta.variant}`]}>
-    <span class="plan-card__cta-shine" aria-hidden="true"></span>
-    <span>{plan.cta.label}</span>
-    <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
-      <path
-        d="M4 10h12m0 0l-4-4m4 4l-4 4"
-        stroke="currentColor"
-        stroke-width="1.8"
-        stroke-linecap="round"
-        stroke-linejoin="round"></path>
-    </svg>
+  <a
+    href={plan.cta.href}
+    class:list={['plan-card__cta', `plan-card__cta--${plan.cta.variant}`]}
+  >
+    {plan.cta.label}
   </a>
 </article>
+
+<style>
+  .plan-card[data-tier='1'] {
+    --tier-1: #6366f1;
+    --tier-soft: rgba(99, 102, 241, 0.06);
+    --tier-border: rgba(99, 102, 241, 0.25);
+  }
+
+  .plan-card[data-tier='2'] {
+    --tier-1: #6366f1;
+    --tier-soft: rgba(99, 102, 241, 0.06);
+    --tier-border: rgba(99, 102, 241, 0.25);
+  }
+
+  .plan-card[data-tier='3'] {
+    --tier-1: #6366f1;
+    --tier-soft: rgba(99, 102, 241, 0.06);
+    --tier-border: rgba(99, 102, 241, 0.25);
+  }
+
+  .plan-card {
+    display: flex;
+    flex-direction: column;
+    padding: var(--card-padding-lg);
+    background: var(--color-bg-surface);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-xl);
+    transition:
+      transform var(--duration-base) var(--ease-out),
+      border-color var(--duration-base) var(--ease-out),
+      box-shadow var(--duration-base) var(--ease-out);
+    position: relative;
+    gap: var(--card-gap-section);
+  }
+
+  .plan-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--color-border-default);
+    box-shadow: 0 8px 24px -12px rgba(0, 0, 0, 0.3);
+  }
+
+  .plan-card--featured {
+    border-color: var(--tier-border);
+    background: linear-gradient(180deg, var(--tier-soft) 0%, var(--color-bg-surface) 50%);
+    box-shadow: 0 0 0 1px var(--tier-border);
+  }
+
+  .plan-card--featured:hover,
+  .plan-card[data-tier='1']:hover,
+  .plan-card[data-tier='3']:hover {
+    transform: translateY(-4px);
+    border-color: var(--color-accent);
+    background: linear-gradient(180deg, var(--color-accent-soft) 0%, var(--color-bg-surface) 60%);
+    box-shadow:
+      0 0 0 1px var(--color-accent),
+      0 16px 40px -16px var(--color-accent);
+  }
+
+  .plan-card__badges {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    min-height: 26px;
+  }
+
+  .plan-card__popular-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    background: var(--color-accent);
+    color: #fff;
+    padding: var(--space-1) var(--space-2);
+    border-radius: var(--radius-sm);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+    line-height: 1;
+  }
+
+  .plan-card__popular-badge svg {
+    width: 10px;
+    height: 10px;
+  }
+
+  .plan-card__feature-count {
+    display: inline-flex;
+    align-items: center;
+    padding: var(--space-1) var(--space-2);
+    border-radius: var(--radius-sm);
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border-subtle);
+    line-height: 1;
+  }
+
+  .plan-card__name {
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin: 0 0 var(--space-2);
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    transition: color var(--duration-base) var(--ease-out);
+  }
+
+  .plan-card--featured:hover .plan-card__name,
+  .plan-card[data-tier='1']:hover .plan-card__name,
+  .plan-card[data-tier='3']:hover .plan-card__name {
+    color: var(--color-accent);
+  }
+
+  .plan-card__desc {
+    color: var(--color-text-secondary);
+    font-size: var(--text-sm);
+    line-height: var(--leading-relaxed);
+    margin: 0;
+  }
+
+  .plan-card__features {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--card-gap-row);
+  }
+
+  .plan-card__features li {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    color: var(--color-text-secondary);
+    font-size: var(--text-sm);
+    line-height: var(--leading-snug);
+  }
+
+  .plan-card__check {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    margin-top: 2px;
+    color: var(--color-accent);
+  }
+
+  .plan-card__cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: var(--space-4) var(--space-5);
+    border-radius: var(--radius-md);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    text-decoration: none;
+    transition:
+      transform var(--duration-base) var(--ease-out),
+      box-shadow var(--duration-base) var(--ease-out),
+      background var(--duration-base) var(--ease-out),
+      border-color var(--duration-base) var(--ease-out);
+  }
+
+  .plan-card__cta--primary {
+    color: #fff;
+    background: var(--color-accent);
+  }
+
+  .plan-card__cta--primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px -4px rgba(99, 102, 241, 0.4);
+  }
+
+  .plan-card__cta--outline {
+    color: var(--color-text-primary);
+    background: transparent;
+    border: 1px solid var(--color-border-default);
+  }
+
+  .plan-card__cta--outline:hover {
+    transform: translateY(-2px);
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+    background: var(--color-accent-soft);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .plan-card,
+    .plan-card * {
+      transition: none;
+    }
+    .plan-card:hover,
+    .plan-card__cta:hover {
+      transform: none;
+    }
+  }
+</style>

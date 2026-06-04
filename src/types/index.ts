@@ -1,4 +1,4 @@
-export type ServiceIcon = 'chart' | 'monitor' | 'sparkle';
+export type ServiceIcon = 'megaphone' | 'code' | 'palette';
 export type SocialIcon = 'facebook' | 'twitter' | 'instagram' | 'linkedin';
 export type IconName = ServiceIcon | SocialIcon | 'check' | 'chevron-down' | 'arrow-right';
 

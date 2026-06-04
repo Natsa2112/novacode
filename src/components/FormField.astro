@@ -1,0 +1,36 @@
+---
+interface Props {
+  name: string;
+  label: string;
+  error?: string;
+}
+
+const { name, label, error } = Astro.props;
+---
+
+<div class="form-group" data-field={name}>
+  <label for={name} class="form-label">{label}</label>
+  <slot />
+  {error && <p class="form-error" id={`${name}-error`} role="alert">{error}</p>}
+</div>
+
+<style>
+  .form-group {
+    margin-bottom: var(--space-5);
+  }
+
+  .form-label {
+    display: block;
+    margin-bottom: var(--space-2);
+    font-size: var(--text-sm);
+    font-weight: var(--label-weight);
+    color: var(--label-color);
+  }
+
+  .form-error {
+    margin-top: var(--space-1);
+    font-size: var(--text-sm);
+    color: #ef4444;
+    line-height: var(--leading-normal);
+  }
+</style>

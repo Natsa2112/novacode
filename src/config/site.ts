@@ -51,7 +51,7 @@ export const socials: readonly SocialLink[] = [
 
 export const services: readonly Service[] = [
   {
-    icon: 'chart',
+    icon: 'megaphone',
     title: 'Marketing Digital',
     description:
       'Construimos estrategias que conectan con tu audiencia y convierten visitantes en clientes.',
@@ -62,7 +62,7 @@ export const services: readonly Service[] = [
     ],
   },
   {
-    icon: 'monitor',
+    icon: 'code',
     title: 'Diseño y Desarrollo Web',
     description:
       'Creamos sitios web rápidos, atractivos y funcionales que garantizan una experiencia impecable.',
@@ -73,7 +73,7 @@ export const services: readonly Service[] = [
     ],
   },
   {
-    icon: 'sparkle',
+    icon: 'palette',
     title: 'Branding y Estrategia Visual',
     description: 'Diseñamos identidades visuales que representan la esencia de cada marca.',
     features: [

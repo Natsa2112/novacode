@@ -13,3 +13,52 @@ const { info } = Astro.props;
   <h3>{info.title}</h3>
   <p>{info.description}</p>
 </div>
+
+<style>
+  .info-card {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    padding: var(--space-5);
+    background: var(--color-bg-surface);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-lg);
+    transition:
+      transform var(--duration-base) var(--ease-out),
+      border-color var(--duration-base) var(--ease-out),
+      background var(--duration-base) var(--ease-out);
+  }
+
+  .info-card:hover {
+    transform: translateX(4px);
+    border-color: var(--color-accent);
+    background: var(--color-bg-elevated);
+  }
+
+  .icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+    background: var(--color-accent-soft);
+    border-radius: var(--radius-md);
+    font-size: var(--text-xl);
+  }
+
+  h3 {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+    margin-bottom: var(--space-1);
+  }
+
+  p {
+    color: var(--color-text-primary);
+    font-size: var(--text-base);
+    font-weight: 500;
+  }
+</style>
