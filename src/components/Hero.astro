@@ -328,4 +328,17 @@ const codeSnippet = `<span class="tok-c">// Tu próximo proyecto, en producción
       gap: var(--space-3);
     }
   }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-eyebrow__dot,
+    .hero-orb {
+      animation: none;
+    }
+    .hero-window {
+      transform: none;
+    }
+    .hero-window:hover {
+      transform: none;
+    }
+  }
 </style>

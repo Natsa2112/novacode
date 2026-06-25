@@ -55,7 +55,7 @@ import { contactInfo, socials } from '../config/site';
             class="input"
             placeholder="Tu nombre"
             required
-            aria-describedby="nombre-error"
+            autocomplete="name"
           />
         </FormField>
         <FormField name="email" label="Email">
@@ -66,7 +66,7 @@ import { contactInfo, socials } from '../config/site';
             class="input"
             placeholder="tu@email.com"
             required
-            aria-describedby="email-error"
+            autocomplete="email"
           />
         </FormField>
         <FormField name="telefono" label="Teléfono">
@@ -77,18 +77,12 @@ import { contactInfo, socials } from '../config/site';
             class="input"
             placeholder="+54 11 0000-0000"
             required
-            aria-describedby="telefono-error"
+            autocomplete="tel"
           />
         </FormField>
         <FormField name="servicio" label="Servicio">
-          <select
-            id="servicio"
-            name="servicio"
-            class="select"
-            required
-            aria-describedby="servicio-error"
-          >
-            <option value="" disabled selected hidden>Elegí un servicio</option>
+          <select id="servicio" name="servicio" class="select" required>
+            <option value="" disabled selected>Elegí un servicio</option>
             <option value="web">Desarrollo Web</option>
             <option value="marketing">Marketing Digital</option>
             <option value="ecommerce">E-commerce</option>
@@ -101,8 +95,7 @@ import { contactInfo, socials } from '../config/site';
             name="mensaje"
             class="textarea"
             placeholder="Contanos en qué podemos ayudarte"
-            required
-            aria-describedby="mensaje-error"></textarea>
+            required></textarea>
         </FormField>
         <button type="submit" class="btn btn--primary btn--lg btn--full" id="submitBtn">
           <span id="submitText">Enviar Mensaje</span>
@@ -365,9 +358,9 @@ import { contactInfo, socials } from '../config/site';
   }
 
   .form-alert--error {
-    background: rgba(239, 68, 68, 0.1);
-    border: 1px solid rgba(239, 68, 68, 0.3);
-    color: #ef4444;
+    background: rgba(220, 38, 38, 0.1);
+    border: 1px solid rgba(220, 38, 38, 0.3);
+    color: var(--color-error, #dc2626);
   }
 
   .btn-spinner svg {

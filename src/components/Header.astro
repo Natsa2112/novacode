@@ -4,7 +4,7 @@ import { sections } from '../config/site';
 
 <header class="header">
   <div class="container">
-    <nav class="nav">
+    <nav class="nav" aria-label="Menú principal">
       <a href="/" class="logo">NovaCode</a>
       <button
         class="mobile-menu-btn"
@@ -37,7 +37,7 @@ import { sections } from '../config/site';
     left: 0;
     right: 0;
     z-index: 1000;
-    background: rgba(10, 10, 15, 0.6);
+    background: var(--color-bg-overlay);
     backdrop-filter: saturate(180%) blur(18px);
     -webkit-backdrop-filter: saturate(180%) blur(18px);
     border-bottom: 1px solid transparent;
@@ -93,7 +93,7 @@ import { sections } from '../config/site';
     list-style: none;
     margin: 0;
     padding: var(--space-1);
-    background: rgba(17, 18, 26, 0.5);
+    background: var(--color-bg-elevated);
     border: 1px solid var(--color-border-subtle);
     border-radius: var(--radius-full);
   }
@@ -115,6 +115,12 @@ import { sections } from '../config/site';
   .nav-links a:hover {
     color: var(--color-text-primary);
     background: var(--color-bg-elevated);
+  }
+
+  .nav-links a:focus-visible {
+    outline: 2px solid var(--color-border-focus);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
   }
 
   .nav-links a.active {
@@ -188,12 +194,14 @@ import { sections } from '../config/site';
       visibility: hidden;
       transform: translateY(-100%);
       transition: all 0.5s var(--ease-in-out);
+      pointer-events: none;
     }
 
     .nav-links.active {
       opacity: 1;
       visibility: visible;
       transform: translateY(0);
+      pointer-events: auto;
     }
 
     .nav-links li {

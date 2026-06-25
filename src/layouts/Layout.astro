@@ -2,7 +2,7 @@
 import '@fontsource-variable/inter';
 import '../styles/global.css';
 import { ClientRouter } from 'astro:transitions';
-import { site } from '../config/site';
+import { site, socials } from '../config/site';
 
 interface Props {
   title: string;
@@ -41,6 +41,30 @@ const ogImage = new URL(image, Astro.site).toString();
     <meta name="twitter:image" content={ogImage} />
 
     <slot name="head" />
+
+    <script
+      is:inline
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'ProfessionalService',
+        name: site.name,
+        url: site.url,
+        description: site.description,
+        telephone: site.phone,
+        email: site.email,
+        address: {
+          '@type': 'PostalAddress',
+          addressCountry: 'AR',
+        },
+        sameAs: socials.map((s: { href: string }) => s.href).filter((h: string) => h !== '#'),
+        priceRange: '$$',
+        areaServed: {
+          '@type': 'Country',
+          name: 'Argentina',
+        },
+      })}
+    />
   </head>
   <body>
     <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
