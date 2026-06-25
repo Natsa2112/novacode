@@ -8,6 +8,12 @@
     "directory": "./dist",
     "binding": "ASSETS"
   },
+  "kv_namespaces": [
+    {
+      "binding": "SESSION",
+      "id": "fba21ea610c14c4b9688cd4da3c129ca"
+    }
+  ],
   "vars": {
     "PUBLIC_SITE_URL": "https://novacode.com.ar",
     "PUBLIC_FROM_EMAIL": "noreply@novacode.com.ar",
