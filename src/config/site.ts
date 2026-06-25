@@ -8,7 +8,7 @@ export const site = {
   url: 'https://novacode.com.ar',
   locale: 'es_AR',
   email: 'info@novacode.com.ar',
-  phone: '+54 11 0000-0000',
+  phone: '+54 9 11 5734-5989',
   ogImage: '/og-image.svg',
 } as const;
 

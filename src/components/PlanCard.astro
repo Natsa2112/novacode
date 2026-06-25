@@ -12,14 +12,16 @@ const tierLevel = index + 1;
 
 <article class:list={['plan-card', { 'plan-card--featured': plan.featured }]} data-tier={tierLevel}>
   <div class="plan-card__badges">
-    {plan.badge && (
-      <span class="plan-card__popular-badge">
-        <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
-        </svg>
-        {plan.badge}
-      </span>
-    )}
+    {
+      plan.badge && (
+        <span class="plan-card__popular-badge">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+          </svg>
+          {plan.badge}
+        </span>
+      )
+    }
     <span class="plan-card__feature-count">{plan.features.length} beneficios</span>
   </div>
 
@@ -45,34 +47,17 @@ const tierLevel = index + 1;
     }
   </ul>
 
-  <a
-    href={plan.cta.href}
-    class:list={['plan-card__cta', `plan-card__cta--${plan.cta.variant}`]}
-  >
+  <a href={plan.cta.href} class:list={['plan-card__cta', `plan-card__cta--${plan.cta.variant}`]}>
     {plan.cta.label}
   </a>
 </article>
 
 <style>
-  .plan-card[data-tier='1'] {
-    --tier-1: #6366f1;
-    --tier-soft: rgba(99, 102, 241, 0.06);
-    --tier-border: rgba(99, 102, 241, 0.25);
-  }
-
-  .plan-card[data-tier='2'] {
-    --tier-1: #6366f1;
-    --tier-soft: rgba(99, 102, 241, 0.06);
-    --tier-border: rgba(99, 102, 241, 0.25);
-  }
-
-  .plan-card[data-tier='3'] {
-    --tier-1: #6366f1;
-    --tier-soft: rgba(99, 102, 241, 0.06);
-    --tier-border: rgba(99, 102, 241, 0.25);
-  }
-
   .plan-card {
+    --tier-1: #6366f1;
+    --tier-soft: rgba(99, 102, 241, 0.06);
+    --tier-border: rgba(99, 102, 241, 0.25);
+
     display: flex;
     flex-direction: column;
     padding: var(--card-padding-lg);

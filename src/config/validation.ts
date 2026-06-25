@@ -5,7 +5,7 @@ export const contactSchema = z.object({
     .string()
     .min(2, 'Ingresá tu nombre (2-100 caracteres).')
     .max(100, 'El nombre no puede superar los 100 caracteres.'),
-  email: z.string().min(1, 'Email inválido.').email('Email inválido.').max(200, 'El email no puede superar los 200 caracteres.'),
+  email: z.email('Email inválido.').max(200, 'El email no puede superar los 200 caracteres.'),
   telefono: z
     .string()
     .regex(/^[\d\s+\-()]{6,}$/, 'Teléfono inválido.')

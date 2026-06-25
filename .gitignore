@@ -25,3 +25,6 @@ pnpm-debug.log*
 
 # Plan de actualización - novacode.com.ar
 updateweb.md
+
+# Development plan (local only)
+devplan.md

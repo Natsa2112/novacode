@@ -1,5 +1,5 @@
 ---
-
+import { sections } from '../config/site';
 ---
 
 <header class="header">
@@ -18,11 +18,13 @@
         <span></span>
       </button>
       <ul class="nav-links" id="navLinks">
-        <li><a href="/">Inicio</a></li>
-        <li><a href="#sobre-nosotros">Sobre Nosotros</a></li>
-        <li><a href="#servicios">Servicios</a></li>
-        <li><a href="#planes">Planes</a></li>
-        <li><a href="#contacto">Contacto</a></li>
+        {
+          sections.map((s) => (
+            <li>
+              <a href={s.href}>{s.label}</a>
+            </li>
+          ))
+        }
       </ul>
     </nav>
   </div>
