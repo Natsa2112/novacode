@@ -39,7 +39,14 @@ import { contactInfo, socials } from '../config/site';
         </div>
       </aside>
 
-      <form class="contact-form" id="contactForm" action="/api/contact" method="POST" novalidate data-form-enhanced="false">
+      <form
+        class="contact-form"
+        id="contactForm"
+        action="/api/contact"
+        method="POST"
+        novalidate
+        data-form-enhanced="false"
+      >
         <FormField name="nombre" label="Nombre">
           <input
             type="text"
@@ -74,7 +81,13 @@ import { contactInfo, socials } from '../config/site';
           />
         </FormField>
         <FormField name="servicio" label="Servicio">
-          <select id="servicio" name="servicio" class="select" required aria-describedby="servicio-error">
+          <select
+            id="servicio"
+            name="servicio"
+            class="select"
+            required
+            aria-describedby="servicio-error"
+          >
             <option value="" disabled selected hidden>Elegí un servicio</option>
             <option value="web">Desarrollo Web</option>
             <option value="marketing">Marketing Digital</option>
@@ -94,8 +107,15 @@ import { contactInfo, socials } from '../config/site';
         <button type="submit" class="btn btn--primary btn--lg btn--full" id="submitBtn">
           <span id="submitText">Enviar Mensaje</span>
           <span id="submitSpinner" class="btn-spinner" aria-hidden="true" hidden>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-              <circle cx="12" cy="12" r="10" stroke-dasharray="32" stroke-dashoffset="32" />
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+            >
+              <circle cx="12" cy="12" r="10" stroke-dasharray="32" stroke-dashoffset="32"></circle>
             </svg>
           </span>
         </button>
@@ -126,8 +146,7 @@ import { contactInfo, socials } from '../config/site';
       if (nombre.length < 2 || nombre.length > 100)
         errors.nombre = 'Ingresá tu nombre (2-100 caracteres).';
       if (!EMAIL_RE.test(email) || email.length > 200) errors.email = 'Email inválido.';
-      if (!PHONE_RE.test(telefono) || telefono.length > 30)
-        errors.telefono = 'Teléfono inválido.';
+      if (!PHONE_RE.test(telefono) || telefono.length > 30) errors.telefono = 'Teléfono inválido.';
       if (!SERVICIOS.has(servicio)) errors.servicio = 'Elegí un servicio válido.';
       if (mensaje.length < 3 || mensaje.length > 2000)
         errors.mensaje = 'El mensaje debe tener entre 3 y 2000 caracteres.';
@@ -361,13 +380,23 @@ import { contactInfo, socials } from '../config/site';
   }
 
   @keyframes spin {
-    to { transform: rotate(360deg); }
+    to {
+      transform: rotate(360deg);
+    }
   }
 
   @keyframes dash {
-    0% { stroke-dashoffset: 32; }
-    50% { stroke-dashoffset: 8; transform: rotate(135deg); }
-    100% { stroke-dashoffset: 32; transform: rotate(360deg); }
+    0% {
+      stroke-dashoffset: 32;
+    }
+    50% {
+      stroke-dashoffset: 8;
+      transform: rotate(135deg);
+    }
+    100% {
+      stroke-dashoffset: 32;
+      transform: rotate(360deg);
+    }
   }
 
   @media (max-width: 900px) {

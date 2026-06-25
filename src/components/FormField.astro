@@ -11,7 +11,13 @@ const { name, label, error } = Astro.props;
 <div class="form-group" data-field={name}>
   <label for={name} class="form-label">{label}</label>
   <slot />
-  {error && <p class="form-error" id={`${name}-error`} role="alert">{error}</p>}
+  {
+    error && (
+      <p class="form-error" id={`${name}-error`} role="alert">
+        {error}
+      </p>
+    )
+  }
 </div>
 
 <style>
