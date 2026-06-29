@@ -1,8 +1,5 @@
 ---
-import InfoCard from './InfoCard.astro';
 import FormField from './FormField.astro';
-import Icon from './Icon.astro';
-import { contactInfo, socials } from '../config/site';
 ---
 
 <section id="contacto" class="section">
@@ -16,29 +13,6 @@ import { contactInfo, socials } from '../config/site';
     </header>
 
     <div class="contact-grid">
-      <aside class="contact-info">
-        {contactInfo.map((info) => <InfoCard info={info} />)}
-
-        <div class="social-block">
-          <h3 class="social-block__title">Seguinos</h3>
-          <div class="social-links">
-            {
-              socials.map((s) => (
-                <a
-                  href={s.href}
-                  class="social-link"
-                  aria-label={s.name}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Icon name={s.icon} size={20} />
-                </a>
-              ))
-            }
-          </div>
-        </div>
-      </aside>
-
       <form
         class="contact-form"
         id="contactForm"
@@ -283,62 +257,8 @@ import { contactInfo, socials } from '../config/site';
 
 <style>
   .contact-grid {
-    display: grid;
-    grid-template-columns: 0.9fr 1.1fr;
-    gap: var(--space-8);
-    align-items: start;
-  }
-
-  .contact-info {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-4);
-  }
-
-  .social-block {
-    margin-top: var(--space-2);
-    padding: var(--space-5);
-    background: var(--color-bg-surface);
-    border: 1px solid var(--color-border-subtle);
-    border-radius: var(--radius-lg);
-  }
-
-  .social-block__title {
-    font-size: var(--text-sm);
-    font-weight: 600;
-    color: var(--color-text-secondary);
-    text-transform: uppercase;
-    letter-spacing: var(--tracking-wide);
-    margin-bottom: var(--space-4);
-  }
-
-  .social-links {
-    display: flex;
-    gap: var(--space-2);
-  }
-
-  .social-link {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    color: var(--color-text-secondary);
-    background: var(--color-bg-elevated);
-    border: 1px solid var(--color-border-subtle);
-    border-radius: var(--radius-md);
-    transition:
-      color var(--duration-base) var(--ease-out),
-      background var(--duration-base) var(--ease-out),
-      border-color var(--duration-base) var(--ease-out),
-      transform var(--duration-base) var(--ease-out);
-  }
-
-  .social-link:hover {
-    color: var(--color-text-primary);
-    background: var(--color-accent);
-    border-color: var(--color-accent);
-    transform: translateY(-2px);
+    max-width: 640px;
+    margin: 0 auto;
   }
 
   .contact-form {
@@ -392,19 +312,9 @@ import { contactInfo, socials } from '../config/site';
     }
   }
 
-  @media (max-width: 900px) {
-    .contact-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-
   @media (max-width: 768px) {
     .contact-form {
       padding: var(--space-5);
-    }
-
-    .social-links {
-      justify-content: center;
     }
   }
 </style>

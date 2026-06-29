@@ -1,5 +1,6 @@
 ---
 import type { ContactInfo } from '../types';
+import Icon from './Icon.astro';
 
 interface Props {
   info: ContactInfo;
@@ -9,7 +10,9 @@ const { info } = Astro.props;
 ---
 
 <div class="info-card">
-  <div class="icon" aria-hidden="true">{info.emoji}</div>
+  <div class="icon" aria-hidden="true">
+    <Icon name={info.icon} size={20} />
+  </div>
   <h3>{info.title}</h3>
   <p>{info.description}</p>
 </div>
@@ -44,7 +47,7 @@ const { info } = Astro.props;
     flex-shrink: 0;
     background: var(--color-accent-soft);
     border-radius: var(--radius-md);
-    font-size: var(--text-xl);
+    color: var(--color-accent);
   }
 
   h3 {

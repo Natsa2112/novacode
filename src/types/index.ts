@@ -1,6 +1,13 @@
 export type ServiceIcon = 'megaphone' | 'code' | 'palette';
 export type SocialIcon = 'facebook' | 'twitter' | 'instagram' | 'linkedin';
-export type IconName = ServiceIcon | SocialIcon | 'check' | 'chevron-down' | 'arrow-right';
+export type ContactIcon = 'map-pin' | 'mail' | 'phone';
+export type IconName =
+  | ServiceIcon
+  | SocialIcon
+  | ContactIcon
+  | 'check'
+  | 'chevron-down'
+  | 'arrow-right';
 
 export interface Service {
   icon: ServiceIcon;
@@ -27,7 +34,7 @@ export interface SocialLink {
 }
 
 export interface ContactInfo {
-  emoji: string;
+  icon: ContactIcon;
   title: string;
   description: string;
 }

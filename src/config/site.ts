@@ -130,9 +130,9 @@ export const plans: readonly Plan[] = [
 ];
 
 export const contactInfo: readonly ContactInfo[] = [
-  { emoji: '📍', title: 'Ubicación', description: 'Buenos Aires, Argentina' },
-  { emoji: '📧', title: 'Email', description: 'info@novacode.com.ar' },
-  { emoji: '📱', title: 'Teléfono', description: '+54 9 11 5734-5989' },
+  { icon: 'map-pin', title: 'Ubicación', description: 'Buenos Aires, Argentina' },
+  { icon: 'mail', title: 'Email', description: 'info@novacode.com.ar' },
+  { icon: 'phone', title: 'Teléfono', description: '+54 9 11 5734-5989' },
 ];
 
 export const legalLinks = [
