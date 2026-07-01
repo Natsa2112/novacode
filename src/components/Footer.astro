@@ -8,7 +8,7 @@ import { site, socials, sections, legalLinks, contactInfo } from '../config/site
     <div class="footer-grid">
       <div class="footer-brand">
         <a href="/" class="footer-logo" aria-label={`${site.name} - Inicio`}>
-          <span class="footer-logo__mark" aria-hidden="true"></span>
+          <img src="/nclogo.svg" alt="" class="footer-logo__img" width="56" height="56" />
           <span class="footer-logo__text">{site.name}</span>
         </a>
         <p class="footer-brand__desc">
@@ -114,12 +114,9 @@ import { site, socials, sections, legalLinks, contactInfo } from '../config/site
     text-decoration: none;
   }
 
-  .footer-logo__mark {
-    width: 10px;
-    height: 10px;
-    border-radius: 3px;
-    background: var(--gradient-accent);
-    box-shadow: var(--shadow-glow-accent);
+  .footer-logo__img {
+    width: 56px;
+    height: 56px;
   }
 
   .footer-social {

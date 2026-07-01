@@ -5,7 +5,10 @@ import { sections } from '../config/site';
 <header class="header">
   <div class="container">
     <nav class="nav" aria-label="Menú principal">
-      <a href="/" class="logo">NovaCode</a>
+      <a href="/" class="logo">
+        <img src="/nclogo.svg" alt="" class="logo-img" width="48" height="48" />
+        NovaCode
+      </a>
       <button
         class="mobile-menu-btn"
         aria-label="Menú"
@@ -75,13 +78,9 @@ import { sections } from '../config/site';
     transition: opacity var(--duration-base) var(--ease-out);
   }
 
-  .logo::before {
-    content: '';
-    width: 8px;
-    height: 8px;
-    border-radius: var(--radius-sm);
-    background: var(--gradient-accent);
-    box-shadow: var(--shadow-glow-accent);
+  .logo-img {
+    width: 48px;
+    height: 48px;
   }
 
   .logo:hover {
